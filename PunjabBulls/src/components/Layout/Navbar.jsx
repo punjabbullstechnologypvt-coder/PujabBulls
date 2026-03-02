@@ -11,6 +11,7 @@ const Navbar = () => {
     ["About", "/about"],
     ["Contact", "/contact"],
     ["Privacy Policy", "/privacy-policy"],
+    ["Blog", "/blog"],
   ];
 
   return (
@@ -53,6 +54,7 @@ const Navbar = () => {
         >
           Contact Us
         </Link>
+        
 
         {/* Hamburger */}
         <button
