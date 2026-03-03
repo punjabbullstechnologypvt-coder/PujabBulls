@@ -6,7 +6,6 @@ import SplashScreen from "./components/SplashScreen";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminLogin from "./Pages/Admin/Login";
-import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import AdminBlogs from "./Pages/Admin/AdminBlogs";
 import CreateBlog from "./Pages/Admin/CreateBlog";
 import EditBlog from "./Pages/Admin/EditBlog";
@@ -50,14 +49,6 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute>
-                < AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
           <Route
             path="/admin/blogs"
             element={
