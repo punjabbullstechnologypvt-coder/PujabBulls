@@ -41,36 +41,36 @@ function App() {
 
   return (
     <>
-    <ScrollToTop />
-    <Routes>
-      <Route element={<Layout />}>
-      <Route path="/admin/login" element={<AdminLogin />} />
-      <Route
-        path="/admin/dashboard"
-        element={
-          <ProtectedRoute>
-            < AdminDashboard/>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/admin/blogs"
-        element={
-          <ProtectedRoute>
-            < AdminBlogs/>
-          </ProtectedRoute>
-        }
-      />
-        <Route path="/" element={<Home />} />
-        <Route path="/industries" element={<Industries />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      </Route>
-    </Routes>
-     {/* <Chatbot /> */}
+      <ScrollToTop />
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute>
+                < AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/blogs"
+            element={
+              <ProtectedRoute>
+                < AdminBlogs />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<Home />} />
+          <Route path="/industries" element={<Industries />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        </Route>
+      </Routes>
+      {/* <Chatbot /> */}
     </>
   );
 }
