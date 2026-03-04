@@ -1,0 +1,22 @@
+{
+  "routes": [
+    {
+      "src": "^/assets/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/sitemap.xml$",
+      "dest": "/sitemap.xml"
+    },
+    {
+      "src": "^/robots.txt$",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "^(?!/assets/|/sitemap.xml|/robots.txt).*$",
+      "dest": "/index.html"
+    }
+  ]
+}

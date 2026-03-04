@@ -2,33 +2,45 @@ import { useEffect, useState } from "react";
 import "./styles/splashscreen.css";
 
 export default function SplashScreen({ onFinish }) {
-  const text = "PunjabBulls";
-  const [displayedText, setDisplayedText] = useState("");
-  const [done, setDone] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    let index = 0;
+    // Logo fade in and scale animation happens via CSS
+    // After 2.5 seconds, start fade out
+    const fadeTimer = setTimeout(() => {
+      setFadeOut(true);
+    }, 2500);
 
-    const interval = setInterval(() => {
-      setDisplayedText((prev) => prev + text[index]);
-      index++;
+    // After fade out completes, call onFinish
+    const finishTimer = setTimeout(() => {
+      onFinish?.();
+    }, 3500);
 
-      if (index === text.length) {
-        clearInterval(interval);
-        setTimeout(() => setDone(true), 800);
-        setTimeout(() => onFinish?.(), 1800);
-      }
-    }, 120);
-
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(finishTimer);
+    };
+  }, [onFinish]);
 
   return (
-    <div className={`splash ${done ? "fade-out" : ""}`}>
-      <h1 className="brand">
-        {displayedText}
-        <span className="cursor" />
-      </h1>
+    <div className={`splash ${fadeOut ? "fade-out" : ""}`}>
+      <div className="splash-content">
+        <div className="logo-container">
+          <img 
+            src="https://res.cloudinary.com/ducv9j3hj/image/upload/v1770456470/logo_ry6usn.png" 
+            alt="PunjabBulls" 
+            className="splash-logo"
+          />
+        </div>
+        <div className="loading-bar">
+          <div className="loading-progress"></div>
+        </div>
+      </div>
+      <div className="splash-bg">
+        <div className="circle circle-1"></div>
+        <div className="circle circle-2"></div>
+        <div className="circle circle-3"></div>
+      </div>
     </div>
   );
 }

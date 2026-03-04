@@ -9,24 +9,12 @@ const Footer = () => {
             {/* Brand */}
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <div className="size-6 text-primary">
-                  <svg
-                    fill="none"
-                    viewBox="0 0 48 48"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
-                </div>
-                <span className="font-bold text-lg">Punjabbulls Tech</span>
+                <span className="font-bold text-lg">PunjabBulls Technology Pvt. Ltd.</span>
               </div>
 
               <p className="text-sm text-gray-400 leading-relaxed">
-                Empowering businesses with cutting-edge ERP, CRM, and cloud
-                solutions. Your partner in digital transformation.
+                Empowering businesses with cutting-edge ERP, CRM, cloud
+                solutions, and Business Central. Your partner in digital transformation.
               </p>
             </div>
 
@@ -35,23 +23,13 @@ const Footer = () => {
               <h4 className="font-bold mb-4 text-gray-200">Company</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
+                  <a className="hover:text-primary transition-colors" href="/about">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Partners
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Blog
+                  <a className="hover:text-primary transition-colors" href="/privacy-policy">
+                    Privacy Policy
                   </a>
                 </li>
               </ul>
@@ -62,23 +40,19 @@ const Footer = () => {
               <h4 className="font-bold mb-4 text-gray-200">Services</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    ERP Solutions
+                  <a className="hover:text-primary transition-colors" href="/products">
+                    Products
+                  </a>
+                </li>
+                
+                <li>
+                  <a className="hover:text-primary transition-colors" href="/products#dynamics">
+                    Microsoft Dynamics Business Central
                   </a>
                 </li>
                 <li>
                   <a className="hover:text-primary transition-colors" href="#">
-                    CRM Strategy
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Microsoft Dynamics
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Cloud Migration
+                    
                   </a>
                 </li>
               </ul>
@@ -98,13 +72,14 @@ const Footer = () => {
                   <span className="material-symbols-outlined text-xs">
                     call
                   </span>
-                  +1 (555) 123-4567
+                  +91 9711270115
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-xs">
-                    location_on
+                  <span className="text-xs">
+                    PUNJABBULLS TECHNOLOGY PVT. LTD. FE-30, Lower Ground Floor,
+                    Shivaji Enclave, New Delhi- 110027, India
                   </span>
-                  Punjab, India
+                  
                 </li>
               </ul>
             </div>
@@ -112,11 +87,11 @@ const Footer = () => {
 
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-gray-500">
-              © 2024 Punjabbulls Technology. All rights reserved.
+              © 2026 • PunjabBulls. All rights reserved.
             </p>
 
             <div className="flex gap-4">
-              <a className="text-gray-400 hover:text-white" href="#">
+              <a className="text-gray-400 hover:text-white" href="https://www.linkedin.com/company/punjabbullstechnologypvtltd-relax-erp/posts/?feedView=all">
                 <span className="sr-only">LinkedIn</span>
                 <svg
                   className="h-5 w-5"
@@ -127,7 +102,7 @@ const Footer = () => {
                 </svg>
               </a>
 
-              <a className="text-gray-400 hover:text-white" href="#">
+              {/* <a className="text-gray-400 hover:text-white" href="#">
                 <span className="sr-only">Twitter</span>
                 <svg
                   className="h-5 w-5"
@@ -136,7 +111,7 @@ const Footer = () => {
                 >
                   <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
                 </svg>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
