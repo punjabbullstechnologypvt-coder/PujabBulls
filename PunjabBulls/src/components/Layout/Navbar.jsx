@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [adminMenu, setAdminMenu] = useState(false);
+  const adminRef = useRef(null);
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -12,18 +14,32 @@ const Navbar = () => {
   // }, []);
 
   useEffect(() => {
-  const checkToken = () => {
-    const token = localStorage.getItem("adminToken");
-    setIsAdmin(!!token);
+    const checkToken = () => {
+      const token = localStorage.getItem("adminToken");
+      setIsAdmin(!!token);
+    };
+
+    // Check on mount
+    checkToken();
+
+    // Listen for custom "authChange" event
+    window.addEventListener("authChange", checkToken);
+
+    return () => window.removeEventListener("authChange", checkToken);
+  }, []);
+
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (adminRef.current && !adminRef.current.contains(event.target)) {
+      setAdminMenu(false);
+    }
   };
 
-  // Check on mount
-  checkToken();
+  document.addEventListener("mousedown", handleClickOutside);
 
-  // Listen for custom "authChange" event
-  window.addEventListener("authChange", checkToken);
-
-  return () => window.removeEventListener("authChange", checkToken);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
 }, []);
 
   const handleLogout = () => {
@@ -39,13 +55,12 @@ const Navbar = () => {
     ["About", "/about"],
     ["Contact", "/contact"],
     ["Privacy Policy", "/privacy-policy"],
-    ["Blogs","/blogs"]
+    ["Blogs", "/blogs"],
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#f9fbf9]/90 backdrop-blur-md border-b border-[#e9f1eb]">
       <div className="px-4 md:px-10 py-3 flex items-center justify-between max-w-7xl mx-auto">
-
         {/* Logo */}
         <Link
           to="/"
@@ -77,23 +92,59 @@ const Navbar = () => {
 
           {/* ADMIN LINKS */}
           {isAdmin && (
-           
-            <>
-              <Link
-                to="/admin/blogs"
-                className="text-sm font-medium text-primary"
-              >
-                Manage Blogs
-              </Link>
+  <div
+    ref={adminRef}
+    className="relative"
+    onMouseEnter={() => setAdminMenu(true)}
+    onMouseLeave={() => setAdminMenu(false)}
+  >
+    <button
+      onClick={() => setAdminMenu((prev) => !prev)}
+      className="flex items-center gap-1 text-sm font-medium text-primary"
+    >
+      Admin
 
-              <button
-                onClick={handleLogout}
-                className="text-sm font-medium text-red-600 hover:cursor-pointer"
-              >
-                Logout
-              </button>
-            </>
-          )}
+      <span
+        className={`material-symbols-outlined text-[18px] transition-transform duration-200 ${
+          adminMenu ? "rotate-180" : ""
+        }`}
+      >
+        expand_more
+      </span>
+    </button>
+
+    <div
+      className={`dropdown-enter absolute top-full mt-2 right-0 w-44 bg-white border border-[#e9f1eb] rounded-lg shadow-lg py-2 transition-all duration-200 origin-top ${
+        adminMenu
+          ? "opacity-100 scale-100 visible"
+          : "opacity-0 scale-95 invisible"
+      }`}
+    >
+      <Link
+        to="/admin/blogs"
+        className="block px-4 py-2 text-sm hover:bg-[#f6f8f6]"
+      >
+        Manage Blogs
+      </Link>
+
+      <Link
+        to="/admin/videos"
+        className="block px-4 py-2 text-sm hover:bg-[#f6f8f6]"
+      >
+        Manage Videos
+      </Link>
+
+      <div className="border-t my-1"></div>
+
+      <button
+        onClick={handleLogout}
+        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-[#f6f8f6]"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+)}
         </nav>
 
         {/* Desktop CTA */}
@@ -134,35 +185,60 @@ const Navbar = () => {
               </NavLink>
             ))}
 
-            {!isAdmin ? (
-              <Link
-                to="/admin/login"
-                onClick={() => setOpen(false)}
-                className="text-base font-medium text-primary"
-              >
-                Admin Login
-              </Link>
-            ) : (
-              <>
-                <Link
-                  to="/admin/blogs"
-                  onClick={() => setOpen(false)}
-                  className="text-base font-medium text-primary"
-                >
-                  Manage Blogs
-                </Link>
+            {isAdmin && (
+  <div
+    ref={adminRef}
+    className="relative"
+    onMouseEnter={() => setAdminMenu(true)}
+    onMouseLeave={() => setAdminMenu(false)}
+  >
+    <button
+      onClick={() => setAdminMenu((prev) => !prev)}
+      className="flex items-center gap-1 text-sm font-medium text-primary"
+    >
+      Admin
 
-                <button
-                  onClick={() => {
-                    handleLogout();
-                    setOpen(false);
-                  }}
-                  className="text-base font-medium text-red-600 text-left"
-                >
-                  Logout
-                </button>
-              </>
-            )}
+      <span
+        className={`material-symbols-outlined text-[18px] transition-transform duration-200 ${
+          adminMenu ? "rotate-180" : ""
+        }`}
+      >
+        expand_more
+      </span>
+    </button>
+
+    <div
+      className={`dropdown-enter absolute top-full mt-2 right-0 w-44 bg-white border border-[#e9f1eb] rounded-lg shadow-lg py-2 transition-all duration-200 origin-top ${
+        adminMenu
+          ? "opacity-100 scale-100 visible"
+          : "opacity-0 scale-95 invisible"
+      }`}
+    >
+      <Link
+        to="/admin/blogs"
+        className="block px-4 py-2 text-sm hover:bg-[#f6f8f6]"
+      >
+        Manage Blogs
+      </Link>
+
+      <Link
+        to="/admin/videos"
+        className="block px-4 py-2 text-sm hover:bg-[#f6f8f6]"
+      >
+        Manage Videos
+      </Link>
+
+      <div className="border-t my-1"></div>
+
+      <button
+        onClick={handleLogout}
+        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-[#f6f8f6]"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+)}
           </nav>
 
           <Link

@@ -1,0 +1,31 @@
+.admin-video-page {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px;
+}
+
+.video-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.video-form input,
+.video-form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.video-form button {
+  padding: 12px;
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.video-preview {
+  margin-top: 40px;
+}
