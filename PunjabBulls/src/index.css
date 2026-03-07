@@ -130,3 +130,7 @@
 .pb-chat-trigger {
   animation: fadeUp 0.8s ease forwards;
 }
+
+.dropdown-enter {
+  animation: fadeUp 0.18s ease;
+}

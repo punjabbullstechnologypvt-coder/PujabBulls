@@ -1,0 +1,13 @@
+.video-section {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.video-card {
+  margin-bottom: 40px;
+}
+
+.video-card h3 {
+  margin-bottom: 15px;
+}

@@ -1,0 +1,35 @@
+.manage-videos-page {
+  padding: 40px;
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.video-card-admin {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background: white;
+}
+
+.video-card-admin h3 {
+  margin: 10px 0;
+}
+
+.slug {
+  color: #666;
+  font-size: 14px;
+}
+
+.delete-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

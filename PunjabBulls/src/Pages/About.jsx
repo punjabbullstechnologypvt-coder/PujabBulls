@@ -6,6 +6,8 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
+import { Link } from "react-router-dom";
+import VideoSection from "../components/VideoSection";
 import "../Styles/about.css";
 
 export default function AboutUs() {
@@ -142,6 +144,48 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
+
+      {/* BUSINESS CENTRAL SECTION */}
+<section className="bg-[var(--color-background-light)] py-20">
+  <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+
+    {/* LEFT TEXT */}
+    <div className="animate-fade-up">
+      <h2 className="text-3xl font-bold mb-4">
+        What is Microsoft Dynamics 365 Business Central?
+      </h2>
+
+      <p className="text-gray-600 mb-6">
+        Microsoft Dynamics 365 Business Central is a powerful cloud-based ERP
+        platform designed to unify finance, operations, sales, and customer
+        insights into one intelligent system.
+      </p>
+
+      <p className="text-gray-600 mb-8">
+        It helps organizations streamline workflows, gain real-time business
+        visibility, and scale confidently as they grow.
+      </p>
+
+      <Link
+        to="/about/what-is-business-central"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white font-medium rounded-lg shadow-md hover:opacity-90 transition"
+      >
+        Learn More
+        <span className="material-symbols-outlined text-[18px]">
+          arrow_forward
+        </span>
+      </Link>
+    </div>
+
+    {/* RIGHT VISUAL */}
+    <div className="animate-fade-up animate-delay-1">
+  <div className="rounded-xl overflow-hidden shadow-lg bg-black">
+    <VideoSection slug="what-is-business-central" />
+  </div>
+</div>
+
+  </div>
+</section>
 
       {/* QUALITY & IMPACT */}
       <section className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">

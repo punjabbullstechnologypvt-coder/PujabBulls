@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import blogRoutes from "./routes/blogRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
+import videoRoutes from "./routes/videoRoutes.js";
 import helmet from "helmet";
 import morgan from 'morgan'
 import rateLimit from "express-rate-limit";
@@ -112,6 +113,7 @@ if (!phoneRegex.test(phone)) {
 app.use("/api/blogs", blogRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/videos", videoRoutes);
 
 
 // Server Start

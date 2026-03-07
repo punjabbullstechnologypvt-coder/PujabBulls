@@ -21,7 +21,9 @@ import PrivacyPolicy from "./Pages/Privacy";
 import ScrollToTop from "./components/Layout/ScrollToTop";
 import Blogs from "./Pages/Blogs";
 import BlogDetail from "./Pages/BlogDetail";
-
+import WhatIsBusinessCentral from "./Pages/WhatIsBusinessCentral";
+import UploadVideo from "./Pages/Admin/VideoUpload";
+import ManageVideos from "./Pages/Admin/ManageVideos";
 
 function App() {
   const [showSplash, setShowSplash] = useState(() => {
@@ -53,7 +55,7 @@ function App() {
             path="/admin/blogs"
             element={
               <ProtectedRoute>
-                < AdminBlogs />
+                <AdminBlogs />
               </ProtectedRoute>
             }
           />
@@ -61,7 +63,7 @@ function App() {
             path="/admin/blogs/create"
             element={
               <ProtectedRoute>
-                < CreateBlog />
+                <CreateBlog />
               </ProtectedRoute>
             }
           />
@@ -70,6 +72,23 @@ function App() {
             element={
               <ProtectedRoute>
                 <EditBlog />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/upload-video"
+            element={
+              <ProtectedRoute>
+                <UploadVideo />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/manage-videos"
+            element={
+              <ProtectedRoute>
+                <ManageVideos />
               </ProtectedRoute>
             }
           />
@@ -82,6 +101,10 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:slug" element={<BlogDetail />} />
+          <Route
+            path="/about/what-is-business-central"
+            element={<WhatIsBusinessCentral />}
+          />
         </Route>
       </Routes>
       {/* <Chatbot /> */}
