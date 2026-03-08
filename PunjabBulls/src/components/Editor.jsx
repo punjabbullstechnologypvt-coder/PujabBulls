@@ -8,6 +8,7 @@ import Quote from "@editorjs/quote";
 
 export default function Editor({ onChange, initialData }) {
   const editorRef = useRef(null);
+  const API_URL = import.meta.env.VITE_API_URL
 
   useEffect(() => {
     if (!editorRef.current) {
@@ -27,7 +28,7 @@ export default function Editor({ onChange, initialData }) {
             class: ImageTool,
             config: {
               endpoints: {
-                byFile: "http://localhost:5000/api/upload/editor",
+                byFile: `${API_URL}/api/upload/editor`,
               },
               additionalRequestHeaders: {
                 Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
