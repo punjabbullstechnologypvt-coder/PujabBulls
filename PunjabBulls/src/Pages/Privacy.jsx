@@ -1,8 +1,12 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const PrivacyPolicy = () => {
   return (
     <main className="bg-[var(--color-background-light)] text-[var(--color-secondary)] font-[var(--font-family-sans)] min-h-screen">
+      <Helmet>
+  <link rel="canonical" href="https://www.punjabbulls.com/privacy-policy" />
+</Helmet>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <section className="animate-fade-up">

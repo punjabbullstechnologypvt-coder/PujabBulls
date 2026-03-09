@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { Helmet } from "react-helmet-async";
 /* =======================
    OFFICE LOCATIONS
 ======================= */
@@ -100,6 +100,9 @@ export default function ContactUs() {
 
   return (
     <>
+    <Helmet>
+  <link rel="canonical" href="https://www.punjabbulls.com/contact" />
+</Helmet>
       {/* =======================
          TOAST
       ======================= */}
@@ -121,6 +124,7 @@ export default function ContactUs() {
          CONTACT + FORM
       ======================= */}
       <section className="min-h-screen bg-background-light flex items-center justify-center px-6 py-20">
+        
         <div className="w-full max-w-6xl grid md:grid-cols-2 gap-16">
           <div>
             <span className="text-xs tracking-widest text-primary">

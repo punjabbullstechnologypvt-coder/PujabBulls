@@ -8,11 +8,15 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import VideoSection from "../components/VideoSection";
+import { Helmet } from "react-helmet-async";
 import "../Styles/about.css";
 
 export default function AboutUs() {
   return (
     <main className="bg-[var(--color-background-light)] text-[var(--color-secondary)]">
+      <Helmet>
+  <link rel="canonical" href="https://www.punjabbulls.com/about" />
+</Helmet>
       {/* HERO */}
      {/* HERO */}
 <section
