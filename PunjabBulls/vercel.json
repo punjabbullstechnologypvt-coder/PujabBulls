@@ -1,51 +1,15 @@
 {
-  "routes": [
-    {
-      "src": "^/about\\.html$",
-      "status": 301,
-      "headers": { "Location": "/about" }
-    },
-    {
-      "src": "^/distribution\\.html$",
-      "status": 301,
-      "headers": { "Location": "/industries" }
-    },
-    {
-      "src": "^/privacy\\.html$",
-      "status": 301,
-      "headers": { "Location": "/privacy-policy" }
-    },
-    {
-      "src": "^/terms\\.html$",
-      "status": 301,
-      "headers": { "Location": "/privacy-policy" }
-    },
-    {
-      "src": "^/microsoft-dynamics-365-business-central\\.html$",
-      "status": 301,
-      "headers": { "Location": "/products" }
-    },
-
-    {
-      "src": "^/assets/(.*)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
-    },
-
-    {
-      "src": "^/sitemap.xml$",
-      "dest": "/sitemap.xml"
-    },
-
-    {
-      "src": "^/robots.txt$",
-      "dest": "/robots.txt"
-    },
-
-    {
-      "src": "^(?!/assets/|/sitemap.xml|/robots.txt).*$",
-      "dest": "/index.html"
-    }
+  "redirects": [
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/distribution.html", "destination": "/industries", "permanent": true },
+    { "source": "/privacy.html", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/terms.html", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/microsoft-dynamics-365-business-central.html", "destination": "/products", "permanent": true },
+    { "source": "/TcsinBusinessCentral.html", "destination": "/products", "permanent": true },
+    { "source": "/Stock&SaleVisibility.html", "destination": "/products", "permanent": true },
+    { "source": "/RiceIndustry.html", "destination": "/industries", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/((?!assets/|sitemap.xml|robots.txt).*)", "destination": "/index.html" }
   ]
 }
