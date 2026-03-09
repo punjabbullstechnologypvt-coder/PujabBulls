@@ -6,36 +6,107 @@ import ImageTool from "@editorjs/image";
 import Code from "@editorjs/code";
 import Quote from "@editorjs/quote";
 
+import Table from "@editorjs/table";
+import Embed from "@editorjs/embed";
+// import Checklist from "@editorjs/checklist";
+import Delimiter from "@editorjs/delimiter";
+import InlineCode from "@editorjs/inline-code";
+
+import Marker from "@editorjs/marker";
+import ColorPlugin from "editorjs-text-color-plugin";
+
 export default function Editor({ onChange, initialData }) {
   const editorRef = useRef(null);
-  const API_URL = import.meta.env.VITE_API_URL
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (!editorRef.current) {
       editorRef.current = new EditorJS({
         holder: "editorjs",
         data: initialData || {},
+
         async onChange(api) {
           const content = await api.saver.save();
           onChange(content);
         },
+
         tools: {
-          header: Header,
-          list: List,
+          header: {
+            class: Header,
+            inlineToolbar: true
+          },
+
+          list: {
+            class: List,
+            inlineToolbar: true
+          },
+
+          // checklist: {
+          //   class: Checklist,
+          //   inlineToolbar: true
+          // },
+
+          table: {
+            class: Table,
+            inlineToolbar: true
+          },
+
+          quote: {
+            class: Quote,
+            inlineToolbar: true
+          },
+
           code: Code,
-          quote: Quote,
+
+          inlineCode: InlineCode,
+
+          delimiter: Delimiter,
+
+          embed: Embed,
+
+    
+
+          marker: {
+            class: Marker
+          },
+
+          Color: {
+            class: ColorPlugin,
+            config: {
+              colorCollections: [
+                "#000000",
+                "#EF4444",
+                "#3B82F6",
+                "#10B981",
+                "#F59E0B",
+                "#9333EA"
+              ],
+              defaultColor: "#000000",
+              type: "text"
+            }
+          },
+
           image: {
             class: ImageTool,
             config: {
               endpoints: {
-                byFile: `${API_URL}/api/upload/editor`,
+                byFile: `${API_URL}/api/upload/editor`
               },
               additionalRequestHeaders: {
-                Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-              },
-            },
-          },
+                Authorization: `Bearer ${localStorage.getItem("adminToken")}`
+              }
+            }
+          }
         },
+
+        inlineToolbar: [
+          "bold",
+          "italic",
+          "link",
+          // "marker",
+          // "Color",
+          // "inlineCode"
+        ]
       });
     }
 

@@ -4,7 +4,7 @@ export default function BlogRenderer({ content }) {
   if (!content || !content.blocks) return null;
 
   return (
-    <div className="max-w-none leading-7 text-gray-800">
+    <div className="max-w-none leading-7 text-gray-800 [&_a]:text-blue-600 [&_a]:underline">
       {content.blocks.map((block, index) => {
         switch (block.type) {
           /* ================= HEADER ================= */
@@ -32,14 +32,20 @@ export default function BlogRenderer({ content }) {
           }
 
           /* ================= PARAGRAPH ================= */
-          case "paragraph":
-            return (
-              <p
-                key={index}
-                className="mb-4"
-                dangerouslySetInnerHTML={{ __html: block.data.text }}
-              />
-            );
+          case "paragraph": {
+          const html = block.data.text.replace(
+            /<a /g,
+            '<a target="_blank" rel="noopener noreferrer" '
+          );
+
+          return (
+            <p
+              key={index}
+              className="mb-4"
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+          );
+        }
 
           /* ================= LIST ================= */
           case "list": {
