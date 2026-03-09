@@ -7,7 +7,6 @@ export default function BlogRenderer({ content }) {
     <div className="max-w-none leading-7 text-gray-800 [&_a]:text-blue-600 [&_a]:underline">
       {content.blocks.map((block, index) => {
         switch (block.type) {
-          /* ================= HEADER ================= */
           case "header": {
             const level = block.data.level || 2;
 
@@ -31,23 +30,44 @@ export default function BlogRenderer({ content }) {
             );
           }
 
-          /* ================= PARAGRAPH ================= */
           case "paragraph": {
-          const html = block.data.text.replace(
-            /<a /g,
-            '<a target="_blank" rel="noopener noreferrer" '
-          );
+              const text = block.data.text;
 
-          return (
-            <p
-              key={index}
-              className="mb-4"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          );
-        }
+              const youtubeRegex =
+                /(https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+))/;
 
-          /* ================= LIST ================= */
+              const match = text.match(youtubeRegex);
+
+              if (match) {
+                const videoId = match[2];
+
+                return (
+                  <div key={index} className="my-8">
+                    <div className="aspect-video">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoId}`}
+                        className="w-full h-full rounded-lg"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                );
+              }
+
+              const html = text.replace(
+                /<a /g,
+                '<a target="_blank" rel="noopener noreferrer" '
+              );
+
+              return (
+                <p
+                  key={index}
+                  className="mb-4"
+                  dangerouslySetInnerHTML={{ __html: html }}
+                />
+              );
+            }
+
           case "list": {
             const isOrdered = block.data.style === "ordered";
 
@@ -70,7 +90,6 @@ export default function BlogRenderer({ content }) {
             );
           }
 
-          /* ================= IMAGE ================= */
           case "image":
             return (
               <div key={index} className="my-8">
@@ -90,7 +109,6 @@ export default function BlogRenderer({ content }) {
               </div>
             );
 
-          /* ================= QUOTE ================= */
           case "quote":
             return (
               <blockquote
@@ -100,7 +118,6 @@ export default function BlogRenderer({ content }) {
               />
             );
 
-          /* ================= CODE ================= */
           case "code":
             return (
               <pre
@@ -111,7 +128,6 @@ export default function BlogRenderer({ content }) {
               </pre>
             );
 
-          /* ================= DELIMITER ================= */
           case "delimiter":
             return (
               <div key={index} className="my-10 text-center text-gray-400">
@@ -119,7 +135,6 @@ export default function BlogRenderer({ content }) {
               </div>
             );
 
-          /* ================= WARNING ================= */
           case "warning":
             return (
               <div
@@ -131,7 +146,6 @@ export default function BlogRenderer({ content }) {
               </div>
             );
 
-          /* ================= EMBED (YouTube etc.) ================= */
           case "embed":
             return (
               <div key={index} className="my-8">
@@ -147,7 +161,6 @@ export default function BlogRenderer({ content }) {
               </div>
             );
 
-          /* ================= TABLE ================= */
           case "table":
             return (
               <div key={index} className="overflow-x-auto my-6">
@@ -169,7 +182,18 @@ export default function BlogRenderer({ content }) {
               </div>
             );
 
-          /* ================= RAW HTML (ADMIN CONTROLLED) ================= */
+
+           case "youtube":
+            return (
+              <div key={index} className="my-8 aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${block.data.url.split("v=")[1]}`}
+                  className="w-full h-full rounded-lg"
+                  allowFullScreen
+                />
+              </div>
+  ); 
+
           case "raw":
             return (
               <div
