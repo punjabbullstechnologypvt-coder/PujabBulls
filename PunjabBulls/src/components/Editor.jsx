@@ -5,15 +5,14 @@ import List from "@editorjs/list";
 import ImageTool from "@editorjs/image";
 import Code from "@editorjs/code";
 import Quote from "@editorjs/quote";
-
 import Table from "@editorjs/table";
 import Embed from "@editorjs/embed";
 // import Checklist from "@editorjs/checklist";
 import Delimiter from "@editorjs/delimiter";
 import InlineCode from "@editorjs/inline-code";
-
 import Marker from "@editorjs/marker";
 import ColorPlugin from "editorjs-text-color-plugin";
+
 
 export default function Editor({ onChange, initialData }) {
   const editorRef = useRef(null);
@@ -63,6 +62,7 @@ export default function Editor({ onChange, initialData }) {
           delimiter: Delimiter,
 
           embed: Embed,
+          // youtube: YoutubeTool,   
 
     
 
