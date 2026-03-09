@@ -1,8 +1,12 @@
 import VideoSection from "../components/VideoSection";
+import { Helmet } from "react-helmet-async";
 
 const WhatIsBusinessCentral = () => {
   return (
     <div className="bg-[var(--color-background-light)] min-h-screen font-[var(--font-family-sans)]">
+      <Helmet>
+  <link rel="canonical" href="https://www.punjabbulls.com/about/what-is-business-central" />
+</Helmet>
 
       {/* HERO */}
       <section className="grid-bg py-20 px-6 text-center">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchBlogBySlug } from "../services/publicBlogService";
 import BlogRenderer from "../components/BlogRenderer";
+import { Helmet } from "react-helmet-async";
 
 export default function BlogDetail() {
   const { slug } = useParams();
@@ -20,6 +21,9 @@ export default function BlogDetail() {
 
   return (
     <div className="container mx-auto py-12 max-w-4xl">
+      <Helmet>
+  <link rel="canonical" href={`https://www.punjabbulls.com/blogs/${slug}`} />
+</Helmet>
       <h1 className="text-4xl font-bold mb-4">
         {blog.title}
       </h1>

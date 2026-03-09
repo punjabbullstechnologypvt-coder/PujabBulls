@@ -24,6 +24,7 @@ import BlogDetail from "./Pages/BlogDetail";
 import WhatIsBusinessCentral from "./Pages/WhatIsBusinessCentral";
 import UploadVideo from "./Pages/Admin/VideoUpload";
 import ManageVideos from "./Pages/Admin/ManageVideos";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   const [showSplash, setShowSplash] = useState(() => {
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <>
+    <HelmetProvider>
       <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
@@ -108,6 +110,7 @@ function App() {
         </Route>
       </Routes>
       {/* <Chatbot /> */}
+    </HelmetProvider>
     </>
   );
 }

@@ -7,10 +7,14 @@ import GST from '../components/Products/GST'
 import TCS from '../components/Products/TCS'
 import RiceERP from '../components/Products/RiceERP'
 import ProductCTA from '../components/Products/ProductCTA'
+import { Helmet } from "react-helmet-async";
 
 const Products = () => {
   return (
     <>
+    <Helmet>
+  <link rel="canonical" href="https://www.punjabbulls.com/products" />
+</Helmet>
       <ProductHero />
       <ProductNav />
       <Dynamics />

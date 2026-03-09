@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchPublishedBlogs } from "../services/publicBlogService";
 import BlogCard from "../components/BlogCard";
+import { Helmet } from "react-helmet-async";
 
 export default function Blogs() {
     const [blogs, setBlogs] = useState([]);
@@ -50,8 +51,12 @@ export default function Blogs() {
 
     return (
         <>
+        <Helmet>
+  <link rel="canonical" href="https://www.punjabbulls.com/blogs" />
+</Helmet>
             {/* Hero Section */}
             <section className="py-20 bg-gray-50 text-center">
+                
                 <h1 className="text-4xl font-extrabold mb-6 text-gray-900">
                     Insights & Resources
                 </h1>
