@@ -4,6 +4,20 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), 
+     prerender({
+      staticDir: 'dist',
+      routes: [
+        '/',
+        '/about',
+        '/products',
+        '/industries',
+        '/contact',
+        '/blogs',
+        '/privacy-policy',
+        '/about/what-is-business-central',
+      ],
+    }),
+  ],
   base: "/",
 })
