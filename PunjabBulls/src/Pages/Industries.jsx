@@ -10,7 +10,9 @@ import { Helmet } from "react-helmet-async";
 const Industries = () => {
   return (
     <>
-    <Helmet>
+<Helmet>
+  <title>Industries We Serve | Manufacturing, Retail & Distribution ERP – PunjabBulls</title>
+  <meta name="description" content="PunjabBulls delivers ERP solutions tailored for manufacturing, retail, and distribution industries across India." />
   <link rel="canonical" href="https://www.punjabbulls.com/industries" />
 </Helmet>
       <IndustryHero />

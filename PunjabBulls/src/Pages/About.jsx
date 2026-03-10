@@ -14,7 +14,9 @@ import "../Styles/about.css";
 export default function AboutUs() {
   return (
     <main className="bg-[var(--color-background-light)] text-[var(--color-secondary)]">
-      <Helmet>
+<Helmet>
+  <title>About Us | PunjabBulls Technology – 15+ Years of ERP Excellence</title>
+  <meta name="description" content="PunjabBulls Technology has 15+ years of experience delivering ERP, CRM, and digital transformation solutions across India. Learn about our team and our mission." />
   <link rel="canonical" href="https://www.punjabbulls.com/about" />
 </Helmet>
       {/* HERO */}

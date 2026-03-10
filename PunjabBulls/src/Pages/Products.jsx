@@ -12,7 +12,9 @@ import { Helmet } from "react-helmet-async";
 const Products = () => {
   return (
     <>
-    <Helmet>
+<Helmet>
+  <title>ERP & CRM Products | Microsoft Dynamics 365, StockSales, RiceERP – PunjabBulls</title>
+  <meta name="description" content="Explore PunjabBulls' suite of enterprise products including Microsoft Dynamics 365 Business Central, StockSales, RiceERP, and GST compliance tools." />
   <link rel="canonical" href="https://www.punjabbulls.com/products" />
 </Helmet>
       <ProductHero />
