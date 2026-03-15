@@ -17,6 +17,7 @@ import Products from "./Pages/Products";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import PrivacyPolicy from "./Pages/Privacy";
+import Terms from "./Pages/Terms";
 // import Chatbot from "./components/Chatbot/Chatbot";
 import ScrollToTop from "./components/Layout/ScrollToTop";
 import Blogs from "./Pages/Blogs";
@@ -113,6 +114,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:slug" element={<BlogDetail />} />
           <Route

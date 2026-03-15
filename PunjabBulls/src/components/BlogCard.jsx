@@ -12,8 +12,7 @@ export default function BlogCard({
 
   return (
     <article className="group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full hover:-translate-y-1 transition duration-300">
-
-      <Link to={`/blogs/${blog.slug}`} className="flex flex-col flex-grow">
+      <a href={`/blogs/${blog.slug}`} className="flex flex-col flex-grow">
 
         {/* Image */}
         <div className="relative aspect-video overflow-hidden">
@@ -49,7 +48,7 @@ export default function BlogCard({
 
         </div>
 
-      </Link>
+      </a>
 
       {/* Admin Controls */}
       {isAdmin && (

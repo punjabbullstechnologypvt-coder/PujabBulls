@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchBlogBySlug } from "../services/publicBlogService";
+import {
+  fetchBlogBySlug,
+  fetchPublishedBlogs,
+} from "../services/publicBlogService";
 import BlogRenderer from "../components/BlogRenderer";
 import SEO from "../components/SEO";
 import NotFound from "./NotFound";
@@ -8,18 +11,28 @@ import NotFound from "./NotFound";
 export default function BlogDetail() {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);
   const [status, setStatus] = useState("loading");
 
   useEffect(() => {
     const load = async () => {
       try {
-        const data = await fetchBlogBySlug(slug);
+        const [data, related] = await Promise.all([
+          fetchBlogBySlug(slug),
+          fetchPublishedBlogs({ page: 1, limit: 6 }),
+        ]);
+
         if (!data?.blog) {
           setStatus("not_found");
           return;
         }
 
         setBlog(data.blog);
+        setRelatedBlogs(
+          (related?.blogs || [])
+            .filter((item) => item.slug !== slug)
+            .slice(0, 3)
+        );
         setStatus("ready");
       } catch {
         setStatus("not_found");
@@ -43,6 +56,7 @@ export default function BlogDetail() {
           headline: blog.title,
           description: blog.excerpt || "Read this PunjabBulls blog article.",
           url: `https://www.punjabbulls.com/blogs/${slug}`,
+          mainEntityOfPage: `https://www.punjabbulls.com/blogs/${slug}`,
           image: blog.coverImage?.url,
           datePublished: blog.createdAt,
           dateModified: blog.updatedAt || blog.createdAt,
@@ -74,6 +88,21 @@ export default function BlogDetail() {
       )}
 
       <BlogRenderer content={blog.content} />
+
+      {relatedBlogs.length > 0 ? (
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold mb-4">Related Posts</h2>
+          <ul className="space-y-3">
+            {relatedBlogs.map((item) => (
+              <li key={item._id || item.slug}>
+                <a href={`/blogs/${item.slug}`} className="text-blue-600 underline">
+                  {item.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </div>
   );
 }

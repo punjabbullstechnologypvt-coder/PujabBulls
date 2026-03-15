@@ -92,6 +92,7 @@ const Hero = () => {
         <img
           src="https://res.cloudinary.com/ducv9j3hj/image/upload/v1770914582/unnamed_d76jew.png"
           alt="Microsoft Dynamics 365 Business Central"
+          fetchPriority="high"
           className="h-16 w-auto object-contain"
         />
       </div>

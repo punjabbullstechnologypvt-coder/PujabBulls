@@ -2,13 +2,14 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { sitemapRoutes } from "../src/seo/routes.js";
-import { SITE_URL } from "../src/seo/site.js";
+import { SITE_URL, normalizePath } from "../src/seo/site.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
 const publicDir = path.join(projectRoot, "public");
 const envPath = path.join(projectRoot, ".env");
 const sitemapPath = path.join(publicDir, "sitemap.xml");
+const buildDate = new Date().toISOString().split("T")[0];
 
 function xmlEscape(value) {
   return value
@@ -82,29 +83,24 @@ async function fetchPublishedBlogs() {
 }
 
 function buildStaticEntry(route) {
-  const lastmod = new Date().toISOString().split("T")[0];
-
   return {
-    loc: `${SITE_URL}${route.path === "/" ? "/" : route.path}`,
-    lastmod,
+    loc: `${SITE_URL}${normalizePath(route.path)}`,
+    lastmod: buildDate,
     changefreq: route.changefreq,
     priority: route.priority,
   };
 }
 
 function buildBlogEntry(blog) {
-  if (!blog?.slug) {
+  if (!blog?.slug || blog.slug.endsWith(".html")) {
     return null;
   }
 
-  const lastmodSource = blog.updatedAt || blog.createdAt || new Date().toISOString();
-  const lastmod = new Date(lastmodSource).toISOString().split("T")[0];
-
   return {
-    loc: `${SITE_URL}/blogs/${blog.slug}`,
-    lastmod,
+    loc: `${SITE_URL}/blogs/${blog.slug.replace(/\/+$/, "")}`,
+    lastmod: buildDate,
     changefreq: "monthly",
-    priority: "0.7",
+    priority: "0.6",
   };
 }
 
@@ -137,4 +133,3 @@ main().catch((error) => {
   console.error("Failed to generate sitemap.xml", error);
   process.exitCode = 1;
 });
-

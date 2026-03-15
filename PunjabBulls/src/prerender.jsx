@@ -14,6 +14,10 @@ function buildHead(route) {
       },
     },
     { type: "link", props: { rel: "canonical", href: canonicalUrl } },
+    {
+      type: "link",
+      props: { rel: "alternate", hrefLang: "en-IN", href: canonicalUrl },
+    },
     { type: "meta", props: { property: "og:site_name", content: SITE_NAME } },
     { type: "meta", props: { property: "og:title", content: route.title } },
     {
@@ -42,9 +46,51 @@ function buildHead(route) {
   };
 }
 
+function titleFromSlug(slug) {
+  return slug
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+async function loadHomepageBlogLinks() {
+  try {
+    const fs = await import("node:fs/promises");
+    const path = await import("node:path");
+    const { fileURLToPath } = await import("node:url");
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    const projectRoot = path.resolve(__dirname, "..");
+    const sitemapPath = path.join(projectRoot, "public", "sitemap.xml");
+    const sitemap = await fs.readFile(sitemapPath, "utf8");
+    const matches = Array.from(
+      sitemap.matchAll(/<loc>https:\/\/www\.punjabbulls\.com\/blogs\/([^<]+)<\/loc>/g)
+    );
+
+    return matches.slice(0, 3).map((match) => {
+      const slug = match[1];
+      return {
+        slug,
+        title: titleFromSlug(slug),
+      };
+    });
+  } catch {
+    return [];
+  }
+}
+
 export async function prerender({ url }) {
   const route = staticRouteMeta[url] || staticRouteMeta["/404"];
-  const html = '<div data-prerender-shell="true" aria-hidden="true"></div>';
+  const blogLinks = url === "/" ? await loadHomepageBlogLinks() : [];
+  const homepageLinks =
+    blogLinks.length > 0
+      ? `<noscript><section><h2>Latest Blog Posts</h2>${blogLinks
+          .map(
+            (blog) =>
+              `<article><a href="/blogs/${blog.slug}">${blog.title}</a></article>`
+          )
+          .join("")}</section></noscript>`
+      : "";
+  const html = `<div data-prerender-shell="true" aria-hidden="true"></div>${homepageLinks}`;
 
   return {
     html,

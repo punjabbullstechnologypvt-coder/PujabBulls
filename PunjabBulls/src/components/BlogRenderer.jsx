@@ -209,6 +209,12 @@ export default function BlogRenderer({ content }) {
             return null;
         }
       })}
+      <p className="mt-8">
+        Explore more on our{" "}
+        <a href="/products">ERP products</a> and{" "}
+        <a href="/industries">industry solutions</a> to see how PunjabBulls
+        applies these ideas in real business environments.
+      </p>
     </div>
   );
 }

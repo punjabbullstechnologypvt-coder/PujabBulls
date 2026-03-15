@@ -24,6 +24,7 @@ export default function SEO({
       <meta name="description" content={description} />
       <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en-IN" href={canonicalUrl} />
 
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={title} />
@@ -56,4 +57,3 @@ export default function SEO({
     </Helmet>
   );
 }
-

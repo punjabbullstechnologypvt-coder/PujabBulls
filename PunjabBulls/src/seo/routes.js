@@ -7,7 +7,7 @@ export const staticRouteMeta = {
     canonical: "/",
     prerender: true,
     sitemap: true,
-    changefreq: "weekly",
+    changefreq: "daily",
     priority: "1.0",
   },
   "/about": {
@@ -78,7 +78,17 @@ export const staticRouteMeta = {
     prerender: true,
     sitemap: true,
     changefreq: "monthly",
-    priority: "0.7",
+    priority: "0.8",
+  },
+  "/terms": {
+    title: "Terms & Conditions | PunjabBulls Technology Pvt. Ltd.",
+    description:
+      "Review the PunjabBulls terms and conditions for using our website, services, and published content.",
+    canonical: "/terms",
+    prerender: false,
+    sitemap: false,
+    changefreq: "yearly",
+    priority: "0.3",
   },
   "/404": {
     title: "Page Not Found | PunjabBulls",
@@ -98,4 +108,3 @@ export const prerenderRoutes = Object.entries(staticRouteMeta)
 export const sitemapRoutes = Object.entries(staticRouteMeta)
   .filter(([, meta]) => meta.sitemap)
   .map(([path, meta]) => ({ path, ...meta }));
-
