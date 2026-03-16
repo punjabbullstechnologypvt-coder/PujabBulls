@@ -96,6 +96,7 @@ export default function BlogRenderer({ content }) {
                 <img
                   src={block.data.file?.url}
                   alt={block.data.caption || "Blog image"}
+                  loading="lazy"
                   className="w-full rounded-lg"
                 />
                 {block.data.caption && (
@@ -208,6 +209,12 @@ export default function BlogRenderer({ content }) {
             return null;
         }
       })}
+      <p className="mt-8">
+        Explore more on our{" "}
+        <a href="/products">ERP products</a> and{" "}
+        <a href="/industries">industry solutions</a> to see how PunjabBulls
+        applies these ideas in real business environments.
+      </p>
     </div>
   );
 }

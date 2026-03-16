@@ -12,14 +12,14 @@ export default function BlogCard({
 
   return (
     <article className="group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full hover:-translate-y-1 transition duration-300">
-
-      <Link to={`/blogs/${blog.slug}`} className="flex flex-col flex-grow">
+      <a href={`/blogs/${blog.slug}`} className="flex flex-col flex-grow">
 
         {/* Image */}
         <div className="relative aspect-video overflow-hidden">
           <img
             src={blog.coverImage?.url}
             alt={blog.title}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green-900/20"></div>
@@ -48,7 +48,7 @@ export default function BlogCard({
 
         </div>
 
-      </Link>
+      </a>
 
       {/* Admin Controls */}
       {isAdmin && (

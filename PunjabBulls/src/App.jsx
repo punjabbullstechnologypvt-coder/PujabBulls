@@ -17,6 +17,7 @@ import Products from "./Pages/Products";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import PrivacyPolicy from "./Pages/Privacy";
+import Terms from "./Pages/Terms";
 // import Chatbot from "./components/Chatbot/Chatbot";
 import ScrollToTop from "./components/Layout/ScrollToTop";
 import Blogs from "./Pages/Blogs";
@@ -24,10 +25,23 @@ import BlogDetail from "./Pages/BlogDetail";
 import WhatIsBusinessCentral from "./Pages/WhatIsBusinessCentral";
 import UploadVideo from "./Pages/Admin/VideoUpload";
 import ManageVideos from "./Pages/Admin/ManageVideos";
-import { HelmetProvider } from "react-helmet-async";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   const [showSplash, setShowSplash] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    const isPrerenderedRoute = Boolean(
+      document.querySelector('meta[name="prerendered-route"]')
+    );
+
+    if (isPrerenderedRoute) {
+      sessionStorage.setItem("punjabbulls_splash_seen", "true");
+      return false;
+    }
+
     return !sessionStorage.getItem("punjabbulls_splash_seen");
   });
 
@@ -48,7 +62,6 @@ function App() {
 
   return (
     <>
-    <HelmetProvider>
       <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
@@ -101,16 +114,18 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:slug" element={<BlogDetail />} />
           <Route
             path="/about/what-is-business-central"
             element={<WhatIsBusinessCentral />}
           />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
       {/* <Chatbot /> */}
-    </HelmetProvider>
     </>
   );
 }
