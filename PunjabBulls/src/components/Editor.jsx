@@ -134,13 +134,13 @@ import Delimiter from "@editorjs/delimiter";
 import InlineCode from "@editorjs/inline-code";
 import Marker from "@editorjs/marker";
 import ColorPlugin from "editorjs-text-color-plugin";
+import api from "../api/client";
+import { trackAdminEvent } from "../services/adminTelemetry";
 
-export default function Editor({ onChange, initialData }) {
+export default function Editor({ onChange, initialData, telemetryContext = "blog_editor" }) {
 
   const editorRef = useRef(null);
   const instanceRef = useRef(null);
-
-  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
 
@@ -210,15 +210,23 @@ export default function Editor({ onChange, initialData }) {
         image: {
           class: ImageTool,
           config: {
+            uploader: {
+              async uploadByFile(file) {
+                const formData = new FormData();
+                formData.append("image", file);
 
-            endpoints: {
-              byFile: `${API_URL}/api/upload/editor`
-            },
+                const { data } = await api.post("/api/upload/editor", formData);
 
-            additionalRequestHeaders: {
-              Authorization: `Bearer ${localStorage.getItem("adminToken")}`
+                if (data?.success === 1) {
+                  trackAdminEvent("admin_editor_image_uploaded", {
+                    context: telemetryContext,
+                    publicId: data.file?.public_id || "",
+                  });
+                }
+
+                return data;
+              },
             }
-
           }
         }
 

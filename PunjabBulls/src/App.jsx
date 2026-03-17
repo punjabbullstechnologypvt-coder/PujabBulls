@@ -28,6 +28,7 @@ import UploadVideo from "./Pages/Admin/VideoUpload";
 import ManageVideos from "./Pages/Admin/ManageVideos";
 import NotFound from "./Pages/NotFound";
 import ERPForRice from "./Pages/ERPForRice";
+import AdminTelemetry from "./components/AdminTelemetry";
 
 function App() {
   const [showSplash, setShowSplash] = useState(() => {
@@ -65,6 +66,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      <AdminTelemetry />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/admin/login" element={<AdminLogin />} />

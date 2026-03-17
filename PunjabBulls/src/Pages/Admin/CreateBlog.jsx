@@ -2,6 +2,7 @@ import { useState } from "react";
 import Editor from "../../components/Editor";
 import api from "../../api/client";
 import { useNavigate } from "react-router-dom";
+import { trackAdminEvent } from "../../services/adminTelemetry";
 
 export default function CreateBlog() {
     const [title, setTitle] = useState("");
@@ -38,6 +39,10 @@ export default function CreateBlog() {
         url: data.url,
         public_id: data.public_id,
         });
+        trackAdminEvent("admin_image_uploaded", {
+        context: "blog_cover_create",
+        publicId: data.public_id,
+        });
 
     } catch (err) {
         alert(err.response?.data?.message || "Image upload failed");
@@ -71,12 +76,20 @@ export default function CreateBlog() {
 
         setSubmitting(true);
 
-        await api.post("/api/blogs", {
+        const payload = {
         title,
         excerpt,
         content,
         status: "published",
         coverImage,
+        };
+
+        const { data } = await api.post("/api/blogs", payload);
+        trackAdminEvent("admin_blog_created", {
+        blogId: data?.blog?._id || "",
+        title,
+        slug: data?.blog?.slug || "",
+        coverImagePublicId: coverImage.public_id,
         });
 
         navigate("/admin/blogs");
@@ -132,7 +145,10 @@ export default function CreateBlog() {
                 )}
             </div>
 
-            <Editor onChange={setContent} />
+            <Editor
+                onChange={setContent}
+                telemetryContext="blog_create"
+            />
 
             <button
                 onClick={handleSubmit}

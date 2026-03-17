@@ -1,6 +1,10 @@
 import { useState } from "react";
 import api from "../../api/client";
 import { useNavigate } from "react-router-dom";
+import {
+  syncAdminIdentity,
+  trackAdminEvent,
+} from "../../services/adminTelemetry";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
@@ -26,6 +30,10 @@ export default function AdminLogin() {
       });
 
       localStorage.setItem("adminToken", data.token);
+      syncAdminIdentity(email);
+      trackAdminEvent("admin_login_success", {
+        email,
+      });
       window.dispatchEvent(new Event("authChange"));
       navigate("/admin/blogs");
     } catch (err) {

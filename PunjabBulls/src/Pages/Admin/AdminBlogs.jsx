@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getBlogs, deleteBlog } from "../../services/blogService";
 import BlogCard from "../../components/BlogCard";
 import { Link } from "react-router-dom";
+import { trackAdminEvent } from "../../services/adminTelemetry";
 
 export default function AdminBlogs() {
   const [blogs, setBlogs] = useState([]);
@@ -39,7 +40,13 @@ export default function AdminBlogs() {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this blog?")) return;
 
+    const deletedBlog = blogs.find((blog) => blog._id === id);
     await deleteBlog(id);
+    trackAdminEvent("admin_blog_deleted", {
+      blogId: id,
+      title: deletedBlog?.title || "",
+      slug: deletedBlog?.slug || "",
+    });
 
     if (blogs.length === 1 && currentPage > 1) {
       fetchBlogs(currentPage - 1, debouncedSearch);

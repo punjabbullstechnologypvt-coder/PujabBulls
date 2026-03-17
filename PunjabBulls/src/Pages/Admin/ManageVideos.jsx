@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllVideos, deleteVideo } from "../../services/videoService";
 import "../../Styles/managevideo.css";
 import { Link } from "react-router-dom";
+import { trackAdminEvent } from "../../services/adminTelemetry";
 
 const extractVideoId = (url) => {
   const match = url.match(
@@ -30,7 +31,13 @@ const ManageVideos = () => {
     if (!confirm("Delete this video?")) return;
 
     try {
+      const deletedVideo = videos.find((video) => video._id === id);
       await deleteVideo(id);
+      trackAdminEvent("admin_video_deleted", {
+        videoId: id,
+        title: deletedVideo?.title || "",
+        pageSlug: deletedVideo?.pageSlug || "",
+      });
       setVideos(videos.filter((v) => v._id !== id));
     } catch (err) {
       alert("Delete failed");

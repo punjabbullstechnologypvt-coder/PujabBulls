@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 export const adminLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    console.log({email, password});
     if (email !== process.env.ADMIN_EMAIL) {
       return res.status(401).json({
         success: false,
@@ -16,7 +16,7 @@ export const adminLogin = async (req, res) => {
       password,
       process.env.ADMIN_PASSWORD
     );
-
+    console.log(isMatch)
     if (!isMatch) {
       return res.status(401).json({
         success: false,
@@ -33,6 +33,7 @@ export const adminLogin = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
+    console.log(token)
     res.status(200).json({
       success: true,
       token

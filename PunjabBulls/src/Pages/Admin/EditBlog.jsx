@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Editor from "../../components/Editor";
 import api from "../../api/client";
+import { trackAdminEvent } from "../../services/adminTelemetry";
 
 export default function EditBlog() {
   const { id } = useParams();
@@ -62,6 +63,11 @@ export default function EditBlog() {
         url: data.url,
         public_id: data.public_id,
       });
+      trackAdminEvent("admin_image_uploaded", {
+        context: "blog_cover_edit",
+        blogId: id,
+        publicId: data.public_id,
+      });
 
     } catch (err) {
       alert(err.response?.data?.message || "Image upload failed");
@@ -94,6 +100,11 @@ export default function EditBlog() {
           excerpt,
           content,
           coverImage,
+        });
+        trackAdminEvent("admin_blog_updated", {
+          blogId: id,
+          title,
+          coverImagePublicId: coverImage.public_id || "",
         });
 
         navigate("/admin/blogs");
@@ -141,7 +152,14 @@ export default function EditBlog() {
             />
 
             <button
-              onClick={() => setCoverImage(null)}
+              onClick={() => {
+                trackAdminEvent("admin_image_removed", {
+                  context: "blog_cover_edit",
+                  blogId: id,
+                  publicId: coverImage?.public_id || "",
+                });
+                setCoverImage(null);
+              }}
               disabled={uploading || updating}
               className="text-red-500 text-sm"
             >
@@ -166,6 +184,7 @@ export default function EditBlog() {
       <Editor
         initialData={initialContent}
         onChange={setContent}
+        telemetryContext="blog_edit"
       />
 
       <button

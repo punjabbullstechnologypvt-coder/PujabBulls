@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { uploadVideo } from "../../services/videoService";
 import "../../Styles/adminvideo.css";
+import { trackAdminEvent } from "../../services/adminTelemetry";
 
 const UploadVideo = () => {
   const [form, setForm] = useState({
@@ -38,6 +39,10 @@ const UploadVideo = () => {
     try {
       setLoading(true);
       await uploadVideo(form);
+      trackAdminEvent("admin_video_uploaded", {
+        title: form.title,
+        pageSlug: form.pageSlug,
+      });
       alert("Video uploaded successfully");
 
       setForm({
