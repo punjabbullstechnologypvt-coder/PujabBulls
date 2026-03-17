@@ -3,6 +3,7 @@ import AuditLog from "../models/AuditLog.js";
 export const getImageAuditLogs = async (req, res) => {
   try {
     const {
+      page = 1,
       limit = 100,
       publicId,
       blogId,
@@ -10,6 +11,7 @@ export const getImageAuditLogs = async (req, res) => {
       level,
     } = req.query;
 
+    const parsedPage = Math.max(parseInt(page, 10) || 1, 1);
     const parsedLimit = Math.min(Math.max(parseInt(limit, 10) || 100, 1), 500);
     const filter = {
       domain: "blog-image",
@@ -31,14 +33,19 @@ export const getImageAuditLogs = async (req, res) => {
       filter.level = level;
     }
 
+    const totalLogs = await AuditLog.countDocuments(filter);
     const logs = await AuditLog.find(filter)
       .sort({ timestamp: -1 })
+      .skip((parsedPage - 1) * parsedLimit)
       .limit(parsedLimit)
       .lean();
 
     return res.status(200).json({
       success: true,
       count: logs.length,
+      page: parsedPage,
+      totalPages: Math.max(Math.ceil(totalLogs / parsedLimit), 1),
+      totalLogs,
       logs,
     });
   } catch (error) {

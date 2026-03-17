@@ -61,6 +61,11 @@ export default function ImageAuditLogs() {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [pagination, setPagination] = useState({
+    page: 1,
+    totalPages: 1,
+    totalLogs: 0,
+  });
   const [filters, setFilters] = useState({
     publicId: "",
     blogId: "",
@@ -69,17 +74,25 @@ export default function ImageAuditLogs() {
     limit: "100",
   });
 
-  const loadLogs = async () => {
+  const loadLogs = async (page = 1, nextFilters = filters) => {
     try {
       setLoading(true);
       setError("");
 
       const activeFilters = Object.fromEntries(
-        Object.entries(filters).filter(([, value]) => value !== ""),
+        Object.entries(nextFilters).filter(([, value]) => value !== ""),
       );
 
-      const data = await getImageAuditLogs(activeFilters);
+      const data = await getImageAuditLogs({
+        ...activeFilters,
+        page,
+      });
       setLogs(data.logs || []);
+      setPagination({
+        page: data.page || page,
+        totalPages: data.totalPages || 1,
+        totalLogs: data.totalLogs || 0,
+      });
     } catch (err) {
       setError(
         err.response?.data?.message || "Failed to load image audit logs",
@@ -103,7 +116,7 @@ export default function ImageAuditLogs() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await loadLogs();
+    await loadLogs(1, filters);
   };
 
   const handleReset = async () => {
@@ -116,20 +129,22 @@ export default function ImageAuditLogs() {
     };
 
     setFilters(nextFilters);
-
-    try {
-      setLoading(true);
-      setError("");
-      const data = await getImageAuditLogs({ limit: 100 });
-      setLogs(data.logs || []);
-    } catch (err) {
-      setError(
-        err.response?.data?.message || "Failed to load image audit logs",
-      );
-    } finally {
-      setLoading(false);
-    }
+    await loadLogs(1, nextFilters);
   };
+
+  const handlePageChange = async (page) => {
+    if (page < 1 || page > pagination.totalPages || page === pagination.page) {
+      return;
+    }
+
+    await loadLogs(page, filters);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const visiblePages = Array.from(
+    { length: pagination.totalPages },
+    (_, index) => index + 1,
+  ).filter((page) => Math.abs(page - pagination.page) <= 2);
 
   return (
     <div className="min-h-screen bg-slate-50 px-4 py-8 md:px-6">
@@ -254,7 +269,7 @@ export default function ImageAuditLogs() {
 
         <div className="mb-6 grid gap-4 md:grid-cols-4">
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <div className="text-sm text-slate-500">Loaded Events</div>
+            <div className="text-sm text-slate-500">Loaded This Page</div>
             <div className="mt-2 text-3xl font-bold text-slate-900">
               {logs.length}
             </div>
@@ -269,6 +284,12 @@ export default function ImageAuditLogs() {
             <div className="text-sm text-slate-500">Warnings</div>
             <div className="mt-2 text-3xl font-bold text-amber-600">
               {logs.filter((item) => item.level === "warn").length}
+            </div>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-sm text-slate-500">Total Matching Events</div>
+            <div className="mt-2 text-3xl font-bold text-slate-900">
+              {pagination.totalLogs}
             </div>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -354,6 +375,51 @@ export default function ImageAuditLogs() {
             ))
           )}
         </div>
+
+        {!loading && pagination.totalPages > 1 && (
+          <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div className="text-sm text-slate-600">
+                Page {pagination.page} of {pagination.totalPages}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handlePageChange(pagination.page - 1)}
+                  disabled={pagination.page === 1}
+                  className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Previous
+                </button>
+
+                {visiblePages.map((page) => (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => handlePageChange(page)}
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition ${
+                      page === pagination.page
+                        ? "bg-[#1f803c] text-white"
+                        : "border border-slate-300 text-slate-700 hover:bg-slate-50"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  type="button"
+                  onClick={() => handlePageChange(pagination.page + 1)}
+                  disabled={pagination.page === pagination.totalPages}
+                  className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
