@@ -4,6 +4,7 @@ export default function BlogCard({
   blog,
   isAdmin = false,
   onDelete,
+  onGeneratePage,
 }) {
   const formattedDate = new Date(blog.createdAt).toLocaleDateString(
     "en-IN",
@@ -52,7 +53,7 @@ export default function BlogCard({
 
       {/* Admin Controls */}
       {isAdmin && (
-        <div className="flex gap-2 p-4 border-t">
+        <div className="flex flex-wrap gap-2 border-t p-4">
 
           <Link
             to={`/admin/blogs/edit/${blog._id}`}
@@ -66,6 +67,13 @@ export default function BlogCard({
             className="text-sm bg-red-600 text-white px-3 py-1 rounded"
           >
             Delete
+          </button>
+
+          <button
+            onClick={() => onGeneratePage?.(blog)}
+            className="text-sm bg-slate-900 text-white px-3 py-1 rounded"
+          >
+            Create Page
           </button>
 
         </div>
