@@ -6,10 +6,49 @@ import {
 } from "../utils/blogImageLifecycle.js";
 import { writeAuditLog } from "../utils/auditLogger.js";
 import { destroyCloudinaryAssets } from "../utils/cloudinaryAssetManager.js";
+import { buildBlogSeo, calculateReadingTimeMinutes } from "../utils/blogSeo.js";
+
+const SITE_URL = "https://www.punjabbulls.com";
+
+function resolveSeoOverrides(existingBlog, incomingSeo = {}) {
+  const previousAutoSeo = buildBlogSeo({
+    title: existingBlog.title,
+    excerpt: existingBlog.excerpt,
+    content: existingBlog.content,
+    slug: existingBlog.slug,
+    coverImage: existingBlog.coverImage,
+    seo: {},
+  });
+  const previousSeo = existingBlog.seo || {};
+
+  const maybeAuto = (key) => {
+    const nextValue = incomingSeo[key];
+
+    if (nextValue === undefined) {
+      return previousSeo[key] === previousAutoSeo[key] ? "" : previousSeo[key];
+    }
+
+    return nextValue === previousAutoSeo[key] ? "" : nextValue;
+  };
+
+  return {
+    metaTitle: maybeAuto("metaTitle"),
+    metaDescription: maybeAuto("metaDescription"),
+    canonicalUrl: maybeAuto("canonicalUrl"),
+    ogImageAlt: maybeAuto("ogImageAlt"),
+    authorName: maybeAuto("authorName"),
+    schemaType: incomingSeo.schemaType || previousSeo.schemaType,
+    noindex:
+      incomingSeo.noindex === undefined ? previousSeo.noindex : incomingSeo.noindex,
+    keywords:
+      incomingSeo.keywords === undefined ? previousSeo.keywords : incomingSeo.keywords,
+    ogImage: incomingSeo.ogImage || previousSeo.ogImage,
+  };
+}
 
 // Create a blog
 export const createBlog = async (req, res) => {
-  const { title, excerpt, content, status, coverImage, thumbnailImage } =
+  const { title, excerpt, content, status, coverImage, thumbnailImage, seo } =
     req.body;
   const uploadedImageIds = collectReferencedImagePublicIds({
     coverImage,
@@ -47,6 +86,15 @@ export const createBlog = async (req, res) => {
       counter++;
     }
 
+    const normalizedSeo = buildBlogSeo({
+      title,
+      excerpt,
+      content,
+      slug,
+      coverImage,
+      seo,
+    });
+
     const blog = await Blog.create({
       title,
       slug,
@@ -55,6 +103,8 @@ export const createBlog = async (req, res) => {
       status,
       coverImage,
       thumbnailImage,
+      seo: normalizedSeo,
+      readingTimeMinutes: calculateReadingTimeMinutes(content),
     });
 
     await writeAuditLog({
@@ -173,7 +223,7 @@ export const updateBlog = async (req, res) => {
   try {
     const { id } = req.params;
     blogId = id;
-    const { title, excerpt, content, status, coverImage, thumbnailImage } =
+    const { title, excerpt, content, status, coverImage, thumbnailImage, seo } =
       req.body;
     const uploadedImageIds = collectReferencedImagePublicIds({
       coverImage,
@@ -260,6 +310,15 @@ export const updateBlog = async (req, res) => {
 
     if (excerpt !== undefined) blog.excerpt = excerpt;
     if (status !== undefined) blog.status = status;
+    blog.seo = buildBlogSeo({
+      title: blog.title,
+      excerpt: blog.excerpt,
+      content: blog.content,
+      slug: blog.slug,
+      coverImage: blog.coverImage,
+      seo: resolveSeoOverrides(blog, seo || {}),
+    });
+    blog.readingTimeMinutes = calculateReadingTimeMinutes(blog.content);
 
     await blog.save();
 
@@ -391,4 +450,47 @@ export const getBlogById = async (req, res) => {
     success: true,
     blog,
   });
+};
+
+function escapeXml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+}
+
+export const getBlogSitemap = async (req, res) => {
+  try {
+    const blogs = await Blog.find({ status: "published" })
+      .sort({ updatedAt: -1 })
+      .select("slug updatedAt createdAt");
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${blogs
+  .filter((blog) => blog.slug)
+  .map((blog) => {
+    const lastmod = new Date(blog.updatedAt || blog.createdAt || Date.now())
+      .toISOString()
+      .split("T")[0];
+
+    return `  <url>
+    <loc>${escapeXml(`${SITE_URL}/blogs/${blog.slug}`)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+  })
+  .join("\n")}
+</urlset>
+`;
+
+    res.setHeader("Content-Type", "application/xml; charset=utf-8");
+    return res.status(200).send(xml);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ success: false });
+  }
 };

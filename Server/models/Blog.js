@@ -21,6 +21,10 @@ const blogSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    readingTimeMinutes: {
+      type: Number,
+      default: 1,
+    },
     gallery: [
       {
         url: String,
@@ -38,6 +42,26 @@ const blogSchema = new mongoose.Schema(
       type: String,
       enum: ["draft", "published"],
       default: "draft",
+    },
+    seo: {
+      metaTitle: String,
+      metaDescription: String,
+      keywords: [String],
+      canonicalUrl: String,
+      ogImageAlt: String,
+      noindex: {
+        type: Boolean,
+        default: false,
+      },
+      schemaType: {
+        type: String,
+        default: "BlogPosting",
+      },
+      authorName: String,
+      ogImage: {
+        url: String,
+        public_id: String,
+      },
     },
   },
   { timestamps: true },

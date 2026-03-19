@@ -1,5 +1,13 @@
 import express from "express";
-import { createBlog,getBlogs,getBlogBySlug,updateBlog,deleteBlog,getBlogById } from "../controllers/blogController.js";
+import {
+  createBlog,
+  getBlogs,
+  getBlogBySlug,
+  updateBlog,
+  deleteBlog,
+  getBlogById,
+  getBlogSitemap,
+} from "../controllers/blogController.js";
 import { protectAdmin } from "../middleware/authMiddleware.js";
 const router = express.Router();
     
@@ -8,6 +16,9 @@ const router = express.Router();
 
     // get all blogs 
     router.get("/", getBlogs);
+
+    // Live blog sitemap
+    router.get("/sitemap.xml", getBlogSitemap);
 
     // Get blog by Slug
     router.get("/:slug", getBlogBySlug);

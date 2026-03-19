@@ -12,6 +12,9 @@ export default function SEO({
   keywords,
   canonical,
   ogImage = DEFAULT_OG_IMAGE,
+  ogImageAlt,
+  ogType = "website",
+  article,
   schema,
   noindex = false,
   prerenderHint = false,
@@ -31,7 +34,7 @@ export default function SEO({
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={imageUrl} />
 
@@ -48,8 +51,21 @@ export default function SEO({
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       ) : null}
 
+      {article?.publishedTime ? (
+        <meta property="article:published_time" content={article.publishedTime} />
+      ) : null}
+      {article?.modifiedTime ? (
+        <meta property="article:modified_time" content={article.modifiedTime} />
+      ) : null}
+      {article?.author ? <meta property="article:author" content={article.author} /> : null}
+      {Array.isArray(article?.tags)
+        ? article.tags.map((tag) => (
+            <meta key={tag} property="article:tag" content={tag} />
+          ))
+        : null}
+
       <meta property="og:locale" content="en_IN" />
-      <meta property="og:image:alt" content={title} />
+      <meta property="og:image:alt" content={ogImageAlt || title} />
       <meta name="application-name" content={SITE_NAME} />
       <meta name="publisher" content={SITE_NAME} />
       <meta name="format-detection" content="telephone=no" />

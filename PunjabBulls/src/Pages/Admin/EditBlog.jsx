@@ -15,6 +15,12 @@ export default function EditBlog() {
   const [updating, setUpdating] = useState(false);
   const [initialContent, setInitialContent] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
+  const [seoTitle, setSeoTitle] = useState("");
+  const [seoDescription, setSeoDescription] = useState("");
+  const [seoKeywords, setSeoKeywords] = useState("");
+  const [seoAuthorName, setSeoAuthorName] = useState("");
+  const [ogImageAlt, setOgImageAlt] = useState("");
+  const [noindex, setNoindex] = useState(false);
 
   // Fetch blog
   useEffect(() => {
@@ -29,6 +35,12 @@ export default function EditBlog() {
       setExcerpt(blog.excerpt);
       setInitialContent(blog.content);
       setCoverImage(blog.coverImage);
+      setSeoTitle(blog.seo?.metaTitle || "");
+      setSeoDescription(blog.seo?.metaDescription || "");
+      setSeoKeywords((blog.seo?.keywords || []).join(", "));
+      setSeoAuthorName(blog.seo?.authorName || "");
+      setOgImageAlt(blog.seo?.ogImageAlt || "");
+      setNoindex(Boolean(blog.seo?.noindex));
       setLoading(false);
     };
 
@@ -94,6 +106,14 @@ export default function EditBlog() {
           excerpt,
           content,
           coverImage,
+          seo: {
+            metaTitle: seoTitle,
+            metaDescription: seoDescription,
+            keywords: seoKeywords,
+            authorName: seoAuthorName,
+            ogImageAlt,
+            noindex,
+          },
         });
 
         navigate("/admin/blogs");
@@ -127,6 +147,53 @@ export default function EditBlog() {
         value={excerpt}
         onChange={(e) => setExcerpt(e.target.value)}
       />
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="SEO Title (optional)"
+          value={seoTitle}
+          onChange={(e) => setSeoTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="SEO Keywords comma separated (optional)"
+          value={seoKeywords}
+          onChange={(e) => setSeoKeywords(e.target.value)}
+        />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Author name for schema (optional)"
+          value={seoAuthorName}
+          onChange={(e) => setSeoAuthorName(e.target.value)}
+        />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="OG image alt text (optional)"
+          value={ogImageAlt}
+          onChange={(e) => setOgImageAlt(e.target.value)}
+        />
+      </div>
+
+      <textarea
+        className="border p-2 w-full"
+        placeholder="SEO Description (optional)"
+        value={seoDescription}
+        onChange={(e) => setSeoDescription(e.target.value)}
+      />
+
+      <label className="flex items-center gap-2 text-sm text-gray-700">
+        <input
+          type="checkbox"
+          checked={noindex}
+          onChange={(e) => setNoindex(e.target.checked)}
+        />
+        Prevent indexing for this blog
+      </label>
 
       <div className="flex flex-col gap-2">
         <label>Main Image</label>

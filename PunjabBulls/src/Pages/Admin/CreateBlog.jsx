@@ -8,6 +8,12 @@ export default function CreateBlog() {
     const [excerpt, setExcerpt] = useState("");
     const [content, setContent] = useState(null);
     const [coverImage, setCoverImage] = useState(null);
+    const [seoTitle, setSeoTitle] = useState("");
+    const [seoDescription, setSeoDescription] = useState("");
+    const [seoKeywords, setSeoKeywords] = useState("");
+    const [seoAuthorName, setSeoAuthorName] = useState("");
+    const [ogImageAlt, setOgImageAlt] = useState("");
+    const [noindex, setNoindex] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const navigate = useNavigate();
@@ -77,6 +83,14 @@ export default function CreateBlog() {
         content,
         status: "published",
         coverImage,
+        seo: {
+            metaTitle: seoTitle,
+            metaDescription: seoDescription,
+            keywords: seoKeywords,
+            authorName: seoAuthorName,
+            ogImageAlt,
+            noindex,
+        },
         });
 
         navigate("/admin/blogs");
@@ -110,6 +124,53 @@ export default function CreateBlog() {
                 value={excerpt}
                 onChange={(e) => setExcerpt(e.target.value)}
             />
+
+            <div className="grid gap-4 md:grid-cols-2">
+                <input
+                    type="text"
+                    placeholder="SEO Title (optional)"
+                    className="border p-2 w-full"
+                    value={seoTitle}
+                    onChange={(e) => setSeoTitle(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="SEO Keywords comma separated (optional)"
+                    className="border p-2 w-full"
+                    value={seoKeywords}
+                    onChange={(e) => setSeoKeywords(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Author name for schema (optional)"
+                    className="border p-2 w-full"
+                    value={seoAuthorName}
+                    onChange={(e) => setSeoAuthorName(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="OG image alt text (optional)"
+                    className="border p-2 w-full"
+                    value={ogImageAlt}
+                    onChange={(e) => setOgImageAlt(e.target.value)}
+                />
+            </div>
+
+            <textarea
+                placeholder="SEO Description (optional)"
+                className="border p-2 w-full"
+                value={seoDescription}
+                onChange={(e) => setSeoDescription(e.target.value)}
+            />
+
+            <label className="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                    type="checkbox"
+                    checked={noindex}
+                    onChange={(e) => setNoindex(e.target.checked)}
+                />
+                Prevent indexing for this blog
+            </label>
 
             {coverImage && (
                 <img
