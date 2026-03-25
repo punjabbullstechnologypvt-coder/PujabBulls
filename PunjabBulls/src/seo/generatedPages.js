@@ -1,5 +1,6 @@
 export const generatedSeoPages = [
   // Paste generated SEO page entries here.
+  //Transforming Furniture
   {
   "path": "/transforming-furniture-manufacturing-and-retail-with-erp-a-success-story",
   "heading": "Transforming Furniture Manufacturing & Retail with ERP: A Success Story",
