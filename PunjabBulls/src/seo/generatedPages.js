@@ -3,7 +3,6 @@ export const generatedSeoPages = [
   //Transforming Furniture
   {
     //1st 
-    {
   "path": "/transforming-furniture-manufacturing-and-retail-with-erp-a-success-story",
   "heading": "Transforming Furniture Manufacturing & Retail with ERP: A Success Story",
   "title": "Transforming Furniture Manufacturing & Retail with ERP: A Success Story | PunjabBulls",
@@ -636,10 +635,9 @@ export const generatedSeoPages = [
     "version": "2.31.3"
   }
 }, 
-      }
+      
       //end
-        //2nd
-        //end
+
     
   
 
