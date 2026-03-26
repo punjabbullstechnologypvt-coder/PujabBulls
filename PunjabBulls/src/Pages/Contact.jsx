@@ -192,21 +192,25 @@ export default function ContactUs() {
 
               {["name", "email", "phone"].map((field) => (
                 <input
-  key={field}
-  type={field === "email" ? "email" : field === "phone" ? "tel" : "text"}
-  name={field}
-  value={form[field]}
-  onChange={(e) =>
-    setForm({ ...form, [field]: e.target.value })
-  }
-  placeholder={
-    field === "phone"
-      ? "Contact Number"
-      : field.charAt(0).toUpperCase() + field.slice(1)
-  }
-  required
-  className="w-full border border-gray-200 px-4 py-3 rounded-(--radius) focus:outline-none focus:border-primary"
-/>
+                  key={field}
+                  type={
+                    field === "email" ? "email" : field === "phone" ? "tel" : "text"
+                  }
+                  name={field}
+                  value={form[field]}
+                  onChange={(e) =>
+                    setForm({ ...form, [field]: e.target.value })
+                  }
+                  placeholder={
+                    field === "phone"
+                      ? "Contact Number (e.g. +1 415 555 2671)"
+                      : field.charAt(0).toUpperCase() + field.slice(1)
+                  }
+                  autoComplete={field === "phone" ? "tel" : field}
+                  inputMode={field === "phone" ? "tel" : undefined}
+                  required
+                  className="w-full border border-gray-200 px-4 py-3 rounded-(--radius) focus:outline-none focus:border-primary"
+                />
               ))}
 
               <textarea

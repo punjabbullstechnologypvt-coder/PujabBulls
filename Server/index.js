@@ -60,25 +60,30 @@ app.get("/", (req, res) => {
 
 app.post("/api/contact", async (req, res) => {
   try {
-    const { name, email, phone, message } = req.body;
+    const name = req.body.name?.trim();
+    const email = req.body.email?.trim();
+    const phone = req.body.phone?.trim();
+    const message = req.body.message?.trim();
 
     console.log("CONTACT FORM SUBMISSION:", { name, email, phone, message });
 
     if (!name || !email || !phone || !message) {
-  return res.status(400).json({
-    success: false,
-    message: "All fields are required",
-  });
-}
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
 
-const phoneRegex = /^[6-9]\d{9}$/;
+    // Accept common international number formats while still rejecting malformed input.
+    const normalizedPhone = phone.replace(/[\s\-().]/g, "");
+    const phoneRegex = /^\+?\d{8,15}$/;
 
-if (!phoneRegex.test(phone)) {
-  return res.status(400).json({
-    success: false,
-    message: "Invalid contact number",
-  });
-}
+    if (!phoneRegex.test(normalizedPhone)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid contact number",
+      });
+    }
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
