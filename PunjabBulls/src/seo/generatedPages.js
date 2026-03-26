@@ -1248,7 +1248,8 @@ export const generatedSeoPages = [
     ],
     "version": "2.31.3"
   }
-},//end
+}
+        //end
     
   
 
