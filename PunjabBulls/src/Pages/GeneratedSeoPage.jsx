@@ -2,6 +2,25 @@ import SEO from "../components/SEO";
 import BlogRenderer from "../components/BlogRenderer";
 import RelatedSeoPages from "../components/RelatedSeoPages";
 
+function KeywordChips({ keywords }) {
+  if (!Array.isArray(keywords) || keywords.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {keywords.map((keyword) => (
+        <span
+          key={keyword}
+          className="inline-flex items-center rounded-full bg-[#eef8f1] px-3 py-1 text-sm text-[#1f803c]"
+        >
+          {keyword}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function GeneratedSeoPage({ page }) {
   if (!page) {
     return null;
@@ -32,6 +51,10 @@ export default function GeneratedSeoPage({ page }) {
         {page.heading}
       </h1>
 
+      <div className="mb-6">
+        <KeywordChips keywords={page.keywords} />
+      </div>
+
       {page.excerpt ? (
         <p className="mb-6 text-base leading-7 text-gray-600 sm:text-lg">
           {page.excerpt}
@@ -48,6 +71,11 @@ export default function GeneratedSeoPage({ page }) {
       ) : null}
 
       <BlogRenderer content={page.content} />
+
+      <section className="mt-10 border-t border-gray-200 pt-6">
+        <KeywordChips keywords={page.keywords} />
+      </section>
+
       <RelatedSeoPages currentPath={page.path} />
     </div>
   );
