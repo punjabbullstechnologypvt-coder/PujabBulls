@@ -4525,6 +4525,568 @@ export const generatedSeoPages = [
     "version": "2.31.3"
   }
 },  //end
+  //23april2026(2)
+  {
+  "path": "/fruit-import-erp-software",
+  "heading": "ERP Software for Fruit Import Business (Complete Guide)",
+  "title": "Best ERP Software for Fruit Import Business | Microsoft Dynamics Business Central",
+  "description": "Looking for the best ERP software for fruit import business? Discover how Microsoft Dynamics 365 Business Central helps manage inventory, imports, pricing, and profitability efficiently.",
+  "excerpt": "Managing a fruit import business comes with unique challenges such as inventory spoilage, fluctuating pricing, import tracking, and complex supply chains. This is where ERP software for fruit import business becomes essential.\n\nMicrosoft Dynamics 365 Business Central provides a powerful, cloud-based ERP solution that helps fruit importers streamline operations, reduce wastage, and improve profitability with real-time insights and automation.\n\nDiscover the best ERP software for fruit import business. Learn how Microsoft Dynamics 365 Business Central helps manage inventory, imports, and profitability efficiently.",
+  "keywords": [
+    "Fruit Import ERP Software | Microsoft Dynamics Business Central | PunjabBulls",
+    "fruit import erp software or microsoft dynamics business central or punjabbulls",
+    "PunjabBulls",
+    "ERP",
+    "Microsoft Dynamics 365 Business Central",
+    "fruit inventory management ERP",
+    "ERP for fruit traders",
+    "fruit import ERP",
+    "ERP software for fruit import business",
+    "inventory management ERP",
+    "cold storage ERP",
+    "Microsoft Dynamics Business Central"
+  ],
+  "canonical": "/fruit-import-erp-software",
+  "prerender": true,
+  "sitemap": true,
+  "changefreq": "monthly",
+  "priority": "0.9",
+  "ogImage": "https://res.cloudinary.com/ducv9j3hj/image/upload/v1776172882/blog_images/abthkk88unhgcbfxls2w.jpg",
+  "coverImage": {
+    "url": "https://res.cloudinary.com/ducv9j3hj/image/upload/v1776172882/blog_images/abthkk88unhgcbfxls2w.jpg",
+    "alt": "Fruit Import ERP Software | Microsoft Dynamics Business Central | PunjabBulls"
+  },
+  "showInMoreMenu": true,
+  "showInFooter": true,
+  "showInRelatedSection": true,
+  "navLabel": "Fruit Import ERP",
+  "order": 99,
+  "content": {
+    "time": 1776320999832,
+    "blocks": [
+      {
+        "id": "quAR6sRm2E",
+        "type": "paragraph",
+        "data": {
+          "text": "Still managing your fruit import business on Excel or outdated software? It’s time to switch to a powerful ERP solution built on Microsoft Dynamics 365 Business Central. Manage import operations, inventory, costing, and sales in one system and gain real-time visibility into your business."
+        }
+      },
+      {
+        "id": "ezdVqXiIqV",
+        "type": "paragraph",
+        "data": {
+          "text": "✔ Import Management\n✔ Landed Costing\n✔ Cold Storage Inventory\n✔ Mandi Sales &amp; Commission\n✔ Profitability Tracking"
+        }
+      },
+      {
+        "id": "ZFBThzdsOl",
+        "type": "delimiter"
+      },
+      {
+        "id": "h2ybsb4Se8",
+        "type": "header",
+        "data": {
+          "text": "🟢 Industry Problems",
+          "level": 2
+        }
+      },
+      {
+        "id": "nps46r9b7w",
+        "type": "paragraph",
+        "data": {
+          "text": "Fruit importers face daily challenges:"
+        }
+      },
+      {
+        "id": "33J1H1nPXx",
+        "type": "paragraph",
+        "data": {
+          "text": "- No visibility of container cost &amp; margins\n"
+        }
+      },
+      {
+        "id": "XB4YZ1rppP",
+        "type": "paragraph",
+        "data": {
+          "text": "- Difficulty tracking lot-wise inventory\n"
+        }
+      },
+      {
+        "id": "ojtt6EBwAi",
+        "type": "paragraph",
+        "data": {
+          "text": "- High losses due to stock ageing &amp; wastage\n"
+        }
+      },
+      {
+        "id": "LNun8F3t_P",
+        "type": "paragraph",
+        "data": {
+          "text": "- No system for mandi sales &amp; commission handling\n"
+        }
+      },
+      {
+        "id": "ZnId2Hf1Py",
+        "type": "paragraph",
+        "data": {
+          "text": "- Poor tracking of truck movement &amp; gate entry\n"
+        }
+      },
+      {
+        "id": "X7vAMzQx8M",
+        "type": "paragraph",
+        "data": {
+          "text": "-&nbsp;Better inventory control"
+        }
+      },
+      {
+        "id": "g2c7X9fmRA",
+        "type": "paragraph",
+        "data": {
+          "text": "-&nbsp;Faster billing and dispatch "
+        }
+      },
+      {
+        "id": "ZRzINKHrcI",
+        "type": "paragraph",
+        "data": {
+          "text": "-&nbsp;Improved decision-making "
+        }
+      },
+      {
+        "id": "EFmld77esG",
+        "type": "delimiter"
+      },
+      {
+        "id": "oQTH9dgUfI",
+        "type": "header",
+        "data": {
+          "text": "🟢 Our Solution",
+          "level": 2
+        }
+      },
+      {
+        "id": "8OUhpe_R0N",
+        "type": "paragraph",
+        "data": {
+          "text": "We provide a specialized ERP for fruit importers:"
+        }
+      },
+      {
+        "id": "0fzAW_Hbcr",
+        "type": "header",
+        "data": {
+          "text": "🍎 Import Management",
+          "level": 3
+        }
+      },
+      {
+        "id": "yCYu8ZeyKX",
+        "type": "paragraph",
+        "data": {
+          "text": "- Container-wise purchase tracking\n"
+        }
+      },
+      {
+        "id": "FIQMrksLs3",
+        "type": "paragraph",
+        "data": {
+          "text": "- Supplier &amp; shipment management\n"
+        }
+      },
+      {
+        "id": "jsIhBB1kDq",
+        "type": "paragraph",
+        "data": {
+          "text": "- Import documentation"
+        }
+      },
+      {
+        "id": "XO-7O13U_t",
+        "type": "paragraph",
+        "data": {
+          "text": "- Reduce wastage by up to 30%"
+        }
+      },
+      {
+        "id": "V78tHHaRgK",
+        "type": "paragraph",
+        "data": {
+          "text": "- Real-time profit tracking \n"
+        }
+      },
+      {
+        "id": "ZBUFvIeFzl",
+        "type": "delimiter"
+      },
+      {
+        "id": "-a0zmZOw8O",
+        "type": "header",
+        "data": {
+          "text": "🚀 Benefits of ERP for Fruit Import Business",
+          "level": 2
+        }
+      },
+      {
+        "id": "BJGC1WOrs-",
+        "type": "paragraph",
+        "data": {
+          "text": "- Reduce wastage by up to 30% with better stock tracking\n"
+        }
+      },
+      {
+        "id": "4F1uekwbxO",
+        "type": "paragraph",
+        "data": {
+          "text": "- Real-time profit and cost visibility\n"
+        }
+      },
+      {
+        "id": "XmBY3WaWHV",
+        "type": "paragraph",
+        "data": {
+          "text": "- Faster billing and dispatch process\n"
+        }
+      },
+      {
+        "id": "Hm9PkmPmn9",
+        "type": "paragraph",
+        "data": {
+          "text": "- Improved inventory accuracy\n"
+        }
+      },
+      {
+        "id": "iLNxYS78De",
+        "type": "paragraph",
+        "data": {
+          "text": "- Better decision-making with live reports"
+        }
+      },
+      {
+        "id": "BBnywhTavj",
+        "type": "paragraph",
+        "data": {
+          "text": "- ERP for fruit import business in India"
+        }
+      },
+      {
+        "id": "kLZZqq_3jg",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "SGG-EX7zUy",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "LGbvsC6jFC",
+        "type": "header",
+        "data": {
+          "text": "💰 Landed Costing",
+          "level": 3
+        }
+      },
+      {
+        "id": "cExt_q1Zci",
+        "type": "paragraph",
+        "data": {
+          "text": "- Freight, duty, clearing charges\n"
+        }
+      },
+      {
+        "id": "GkVf0H_eMA",
+        "type": "paragraph",
+        "data": {
+          "text": "- Accurate cost per box calculation\n"
+        }
+      },
+      {
+        "id": "wsJitqPz_S",
+        "type": "paragraph",
+        "data": {
+          "text": "- Real-time profitability\n"
+        }
+      },
+      {
+        "id": "bXR02xCOos",
+        "type": "delimiter"
+      },
+      {
+        "id": "C5wH_2QcwJ",
+        "type": "header",
+        "data": {
+          "text": "📦 Inventory &amp; Cold Storage",
+          "level": 3
+        }
+      },
+      {
+        "id": "Ea20HK8Pgq",
+        "type": "paragraph",
+        "data": {
+          "text": "- Lot-wise &amp; batch tracking\n"
+        }
+      },
+      {
+        "id": "GVdWvb7iqf",
+        "type": "paragraph",
+        "data": {
+          "text": "- Location-wise inventory\n"
+        }
+      },
+      {
+        "id": "8ytEiMJAnQ",
+        "type": "paragraph",
+        "data": {
+          "text": "- Expiry &amp; ageing analysis\n"
+        }
+      },
+      {
+        "id": "hHVCqrtH9i",
+        "type": "delimiter"
+      },
+      {
+        "id": "78bzhq0ENJ",
+        "type": "header",
+        "data": {
+          "text": "🏪 Mandi Sales Management",
+          "level": 3
+        }
+      },
+      {
+        "id": "5oYNYP5gRY",
+        "type": "paragraph",
+        "data": {
+          "text": "- Commission agent handling\n"
+        }
+      },
+      {
+        "id": "PPYDno5JPT",
+        "type": "paragraph",
+        "data": {
+          "text": "- Item-wise / brand-wise sales\n"
+        }
+      },
+      {
+        "id": "OgBNfMvNMM",
+        "type": "paragraph",
+        "data": {
+          "text": "- Cash &amp; wholesale billing\n"
+        }
+      },
+      {
+        "id": "WN8iG__ujH",
+        "type": "delimiter"
+      },
+      {
+        "id": "_eNy9_dxdq",
+        "type": "header",
+        "data": {
+          "text": "🚚 Gate Entry &amp; Logistics",
+          "level": 3
+        }
+      },
+      {
+        "id": "j3qD_5X99N",
+        "type": "paragraph",
+        "data": {
+          "text": "- Truck entry/exit tracking\n"
+        }
+      },
+      {
+        "id": "NS1NpYQ2Je",
+        "type": "paragraph",
+        "data": {
+          "text": "- Gate pass system\n"
+        }
+      },
+      {
+        "id": "57ACEJLKON",
+        "type": "paragraph",
+        "data": {
+          "text": "- Material movement control\n"
+        }
+      },
+      {
+        "id": "MUF1LsG9vL",
+        "type": "delimiter"
+      },
+      {
+        "id": "YLdrhq96v0",
+        "type": "header",
+        "data": {
+          "text": "📊 Advanced Reporting",
+          "level": 3
+        }
+      },
+      {
+        "id": "SwEhU5PASW",
+        "type": "paragraph",
+        "data": {
+          "text": "- Stock ageing\n"
+        }
+      },
+      {
+        "id": "xYCdZUzJnu",
+        "type": "paragraph",
+        "data": {
+          "text": "- Top selling items\n"
+        }
+      },
+      {
+        "id": "_N3OLuulen",
+        "type": "paragraph",
+        "data": {
+          "text": "- Category-wise inventory\n"
+        }
+      },
+      {
+        "id": "Dm24pK5U5c",
+        "type": "paragraph",
+        "data": {
+          "text": "- Profitability reports\n"
+        }
+      },
+      {
+        "id": "MdbyTaMS9U",
+        "type": "delimiter"
+      },
+      {
+        "id": "0lMdlsJSNl",
+        "type": "header",
+        "data": {
+          "text": "🟢 Why Business Central",
+          "level": 2
+        }
+      },
+      {
+        "id": "F1iDgXJY9P",
+        "type": "paragraph",
+        "data": {
+          "text": "Built on Microsoft Dynamics 365 Business Central"
+        }
+      },
+      {
+        "id": "ZBxwkEgA7A",
+        "type": "paragraph",
+        "data": {
+          "text": "- Scalable &amp; cloud-ready\n"
+        }
+      },
+      {
+        "id": "XPmQu8_56S",
+        "type": "paragraph",
+        "data": {
+          "text": "- Real-time reporting\n"
+        }
+      },
+      {
+        "id": "JFM8WW3NQ8",
+        "type": "paragraph",
+        "data": {
+          "text": "- Integrated finance &amp; inventory\n"
+        }
+      },
+      {
+        "id": "ELyxx0AUEd",
+        "type": "paragraph",
+        "data": {
+          "text": "- Global standard ERP"
+        }
+      },
+      {
+        "id": "cR6amoO9iK",
+        "type": "header",
+        "data": {
+          "text": "❓ Frequently Asked Questions",
+          "level": 2
+        }
+      },
+      {
+        "id": "Fh2KAg07Ee",
+        "type": "paragraph",
+        "data": {
+          "text": "What is the best ERP for fruit import business?\n"
+        }
+      },
+      {
+        "id": "TP9ZzR1LyU",
+        "type": "paragraph",
+        "data": {
+          "text": "Microsoft Dynamics 365 Business Central is one of the best ERP solutions for managing inventory, costing, and logistics."
+        }
+      },
+      {
+        "id": "ERIzwFGWEV",
+        "type": "paragraph",
+        "data": {
+          "text": "Can ERP manage cold storage inventory?\n"
+        }
+      },
+      {
+        "id": "55kedARrfi",
+        "type": "paragraph",
+        "data": {
+          "text": "Yes, it supports batch tracking, expiry management, and location-wise stock."
+        }
+      },
+      {
+        "id": "hkn6iP7X2L",
+        "type": "paragraph",
+        "data": {
+          "text": "How does ERP help reduce losses?\n"
+        }
+      },
+      {
+        "id": "7vY7OrWPgV",
+        "type": "paragraph",
+        "data": {
+          "text": "ERP tracks stock ageing and helps reduce wastage."
+        }
+      },
+      {
+        "id": "uE-Bb6eIt6",
+        "type": "paragraph",
+        "data": {
+          "text": "Is ERP useful for mandi sales?\nYes, it supports commission agents, billing, and wholesale sales tracking."
+        }
+      },
+      {
+        "id": "x8C9mn_bx8",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp; "
+        }
+      },
+      {
+        "id": "RevkpRlpWS",
+        "type": "paragraph",
+        "data": {
+          "text": "👉 Book a Free Demo of ERP for Fruit Import Business&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "7X9Mvo1SZ1",
+        "type": "paragraph",
+        "data": {
+          "text": "PunjabBulls Technology Pvt. Ltd."
+        }
+      },
+      {
+        "id": "vDT-t_zoKq",
+        "type": "paragraph",
+        "data": {
+          "text": "📍📞 Phone / WhatsApp: +91 9711270115 📧 Email: dheeraj<a>@punjabbulls.com</a>\n🌐 Website: <a href=\"http://www.punjabbulls.com\">www.punjabbulls.com</a>"
+        }
+      }
+    ],
+    "version": "2.31.3"
+  }
+},//end
         
         
  
