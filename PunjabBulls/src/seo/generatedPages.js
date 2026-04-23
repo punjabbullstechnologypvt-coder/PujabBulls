@@ -4040,6 +4040,491 @@ export const generatedSeoPages = [
     "version": "2.31.3"
   }
 },//end
+  //23april2026
+  {
+  "path": "/dynamics-nav-end-of-life",
+  "heading": "Microsoft Dynamics NAV End of Life: What You Must Know Before 2026",
+  "title": "Microsoft Dynamics NAV End of Life (2026–2028) | Upgrade to Business Central",
+  "description": "Microsoft Dynamics NAV is reaching end of life in 2026–2028. Learn key deadlines, risks, and how to upgrade to Business Central for better performance and scalability.",
+  "excerpt": "Microsoft Dynamics NAV is nearing end of life. Discover key deadlines, risks, and why upgrading to Business Central is essential for your business growth.",
+  "keywords": [
+    "Microsoft Dynamics NAV (Navision) End of Life – What You Must Know",
+    "Microsoft Dynamics 365 Business Central",
+    "migrate nav to business central",
+    "nav 2016 end of life",
+    "navision end of support",
+    "dynamics nav end of life",
+    "cloud ERP upgrade",
+    "NAV vs Business Central",
+    "Business Central migration",
+    "ERP upgrade Microsoft"
+  ],
+  "canonical": "/dynamics-nav-end-of-life",
+  "prerender": true,
+  "sitemap": true,
+  "changefreq": "monthly",
+  "priority": "0.7",
+  "ogImage": "https://res.cloudinary.com/ducv9j3hj/image/upload/v1776088048/blog_images/eciljlnazfrj0fcwchft.png",
+  "coverImage": {
+    "url": "https://res.cloudinary.com/ducv9j3hj/image/upload/v1776088048/blog_images/eciljlnazfrj0fcwchft.png",
+    "alt": "Microsoft Dynamics NAV (Navision) End of Life – What You Must Know"
+  },
+  "showInMoreMenu": false,
+  "showInFooter": true,
+  "showInRelatedSection": true,
+  "navLabel": "NAV End of Life Guide",
+  "order": 99,
+  "content": {
+    "time": 1776087973706,
+    "blocks": [
+      {
+        "id": "-LHWVWNSnM",
+        "type": "header",
+        "data": {
+          "text": "Support Timeline for NAV Versions",
+          "level": 2
+        }
+      },
+      {
+        "id": "NA0r9Ujw4B",
+        "type": "paragraph",
+        "data": {
+          "text": "Below is the official support status of major NAV versions:"
+        }
+      },
+      {
+        "id": "tL3m8raoOW",
+        "type": "paragraph",
+        "data": {
+          "text": "\nNAV 2015 → Support ended in January 2025\n"
+        }
+      },
+      {
+        "id": "TWJ5cPKtKg",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            {
+              "content": "\nNAV 2016 → Support ends on 14 April 2026\n",
+              "items": []
+            },
+            {
+              "content": "\nNAV 2017 → Support ends in January 2027\n",
+              "items": []
+            },
+            {
+              "content": "\nNAV 2018 (Last Version) → Support ends in January 2028\n",
+              "items": []
+            }
+          ]
+        }
+      },
+      {
+        "id": "QOQl_2km2H",
+        "type": "paragraph",
+        "data": {
+          "text": "👉 After these dates, Microsoft will no longer provide updates, patches, or technical support."
+        }
+      },
+      {
+        "id": "yCRt2UU6Y8",
+        "type": "header",
+        "data": {
+          "text": "⚠️ What Happens After NAV Expiry?",
+          "level": 2
+        }
+      },
+      {
+        "id": "v0Dqc3H1VD",
+        "type": "paragraph",
+        "data": {
+          "text": "Once your NAV system reaches end-of-support:"
+        }
+      },
+      {
+        "id": "GUHwhZT09R",
+        "type": "header",
+        "data": {
+          "text": "❌ No Security Updates",
+          "level": 3
+        }
+      },
+      {
+        "id": "vb8Rsg72zS",
+        "type": "paragraph",
+        "data": {
+          "text": "Your system becomes vulnerable to cyber threats and data breaches."
+        }
+      },
+      {
+        "id": "cdEFW63OnX",
+        "type": "header",
+        "data": {
+          "text": "❌ No Bug Fixes",
+          "level": 3
+        }
+      },
+      {
+        "id": "hRfS8TvHND",
+        "type": "paragraph",
+        "data": {
+          "text": "Any issues or errors will remain unresolved by Microsoft."
+        }
+      },
+      {
+        "id": "jqy-hlD89Z",
+        "type": "header",
+        "data": {
+          "text": "❌ No Compliance Updates",
+          "level": 3
+        }
+      },
+      {
+        "id": "VK-_hfw_oE",
+        "type": "paragraph",
+        "data": {
+          "text": "Changes in GST, taxation, or regulatory requirements will not be supported."
+        }
+      },
+      {
+        "id": "83unQpWaCW",
+        "type": "header",
+        "data": {
+          "text": "❌ Integration Challenges",
+          "level": 3
+        }
+      },
+      {
+        "id": "ZAfOnvBNTF",
+        "type": "paragraph",
+        "data": {
+          "text": "Modern tools (Power BI, AI, APIs, cloud services) may stop working properly."
+        }
+      },
+      {
+        "id": "t7HZOGc3_z",
+        "type": "header",
+        "data": {
+          "text": "📉 Business Risks of Continuing on NAV",
+          "level": 2
+        }
+      },
+      {
+        "id": "sMWVbFM8x6",
+        "type": "paragraph",
+        "data": {
+          "text": "Continuing on an unsupported system can lead to:"
+        }
+      },
+      {
+        "id": "Ar0-kMA6LX",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            {
+              "content": "\nIncreased IT maintenance cost\n",
+              "items": []
+            },
+            {
+              "content": "\nHigher risk of system downtime\n",
+              "items": []
+            },
+            {
+              "content": "\nData security concerns\n",
+              "items": []
+            },
+            {
+              "content": "\nCompliance and audit risks\n",
+              "items": []
+            },
+            {
+              "content": "\nLimited scalability for growth\n",
+              "items": []
+            }
+          ]
+        }
+      },
+      {
+        "id": "SI0sdMRlhs",
+        "type": "header",
+        "data": {
+          "text": "🚀 The Recommended Path: Move to Business Central",
+          "level": 2
+        }
+      },
+      {
+        "id": "av8napsUz2",
+        "type": "paragraph",
+        "data": {
+          "text": "Microsoft recommends upgrading to\nMicrosoft Dynamics 365 Business Central, which is the modern, cloud-enabled ERP platform."
+        }
+      },
+      {
+        "id": "zMrlvXJAY_",
+        "type": "header",
+        "data": {
+          "text": "Key Advantages:",
+          "level": 3
+        }
+      },
+      {
+        "id": "IrZ9E3SU6Z",
+        "type": "header",
+        "data": {
+          "text": "✔ Cloud &amp; Anywhere Access",
+          "level": 3
+        }
+      },
+      {
+        "id": "Ll9PFd4rks",
+        "type": "paragraph",
+        "data": {
+          "text": "Work from office, home, or on the go."
+        }
+      },
+      {
+        "id": "boBrWPic2Q",
+        "type": "header",
+        "data": {
+          "text": "✔ Built-in AI &amp; Automation",
+          "level": 3
+        }
+      },
+      {
+        "id": "42a9r3_A8H",
+        "type": "paragraph",
+        "data": {
+          "text": "Automate bank reconciliation, cash flow forecasting, and approvals."
+        }
+      },
+      {
+        "id": "2jrWZiWl8h",
+        "type": "header",
+        "data": {
+          "text": "✔ Seamless Integration",
+          "level": 3
+        }
+      },
+      {
+        "id": "g9p0TIP7kz",
+        "type": "paragraph",
+        "data": {
+          "text": "Works with Microsoft 365 (Excel, Outlook, Teams)."
+        }
+      },
+      {
+        "id": "azTrDrkMBW",
+        "type": "header",
+        "data": {
+          "text": "✔ Real-Time Insights",
+          "level": 3
+        }
+      },
+      {
+        "id": "SI1xJ1XSCI",
+        "type": "paragraph",
+        "data": {
+          "text": "Advanced dashboards and reporting with Power BI."
+        }
+      },
+      {
+        "id": "pZJDkLTCOK",
+        "type": "header",
+        "data": {
+          "text": "✔ Regular Updates",
+          "level": 3
+        }
+      },
+      {
+        "id": "YdoVAHG8Fu",
+        "type": "paragraph",
+        "data": {
+          "text": "Always compliant with latest regulations and features."
+        }
+      },
+      {
+        "id": "gBrTFfan3J",
+        "type": "header",
+        "data": {
+          "text": "🔄 Upgrade Options",
+          "level": 2
+        }
+      },
+      {
+        "id": "9XYzxwYRDO",
+        "type": "paragraph",
+        "data": {
+          "text": "Depending on your current setup, you can choose:"
+        }
+      },
+      {
+        "id": "GxN_IPiZ7V",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            {
+              "content": "\nOn-Premise Upgrade → NAV to Business Central (same server)\n",
+              "items": []
+            },
+            {
+              "content": "\nCloud Migration → Move to Business Central SaaS\n",
+              "items": []
+            },
+            {
+              "content": "\nHybrid Approach → Gradual transition\n",
+              "items": []
+            }
+          ]
+        }
+      },
+      {
+        "id": "DlT73EYobB",
+        "type": "header",
+        "data": {
+          "text": "🧭 When Should You Act?",
+          "level": 2
+        }
+      },
+      {
+        "id": "g9B3j7RxYz",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            {
+              "content": "\nIf you are using NAV 2016 → Immediate action required\n",
+              "items": []
+            },
+            {
+              "content": "\nIf you are using NAV 2017/2018 → Plan within next 6–12 months\n",
+              "items": []
+            }
+          ]
+        }
+      },
+      {
+        "id": "cGM_Ub9PDz",
+        "type": "paragraph",
+        "data": {
+          "text": "👉 Delaying the upgrade increases cost and risk."
+        }
+      },
+      {
+        "id": "YOgYmfcJnm",
+        "type": "header",
+        "data": {
+          "text": "🤝 How We Can Help",
+          "level": 2
+        }
+      },
+      {
+        "id": "EABfalJrw9",
+        "type": "paragraph",
+        "data": {
+          "text": "At DTM Business Solution / PunjabBulls Technology, we specialize in:"
+        }
+      },
+      {
+        "id": "NcAsm5vSYF",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            {
+              "content": "\nNAV to Business Central upgrades\n",
+              "items": []
+            },
+            {
+              "content": "\nData migration with zero loss\n",
+              "items": []
+            },
+            {
+              "content": "\nCustomization and integration\n",
+              "items": []
+            },
+            {
+              "content": "\nUser training and support\n",
+              "items": []
+            },
+            {
+              "content": "\nCloud deployment\n",
+              "items": []
+            }
+          ]
+        }
+      },
+      {
+        "id": "HaV6NGBY-U",
+        "type": "paragraph",
+        "data": {
+          "text": "With 12+ years of experience, we ensure a smooth and risk-free transition."
+        }
+      },
+      {
+        "id": "VVDW2QOf8K",
+        "type": "header",
+        "data": {
+          "text": "📞 Next Steps",
+          "level": 2
+        }
+      },
+      {
+        "id": "grm1md0yxj",
+        "type": "paragraph",
+        "data": {
+          "text": "We recommend scheduling a free system assessment to:"
+        }
+      },
+      {
+        "id": "nRcCxpe4ul",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            {
+              "content": "\nEvaluate your current NAV version\n",
+              "items": []
+            },
+            {
+              "content": "\nIdentify risks and gaps\n",
+              "items": []
+            },
+            {
+              "content": "\nProvide a tailored upgrade roadmap\n",
+              "items": []
+            }
+          ]
+        }
+      },
+      {
+        "id": "KioNwvnJEJ",
+        "type": "header",
+        "data": {
+          "text": "💬 Final Thought",
+          "level": 3
+        }
+      },
+      {
+        "id": "gGqIqXYXNL",
+        "type": "paragraph",
+        "data": {
+          "text": "NAV has served businesses well, but the future is cloud-driven, AI-enabled, and continuously evolving."
+        }
+      },
+      {
+        "id": "E_po0GZfJB",
+        "type": "paragraph",
+        "data": {
+          "text": "👉 Moving to Business Central is not just an upgrade — it’s a strategic business decision."
+        }
+      }
+    ],
+    "version": "2.31.3"
+  }
+},  //end
         
         
  
