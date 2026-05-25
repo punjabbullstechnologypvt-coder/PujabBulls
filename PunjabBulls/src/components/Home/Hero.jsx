@@ -90,7 +90,7 @@ const Hero = () => {
 
       <div className="relative w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center border border-[#e6f0eb]">
         <img
-          src="https://res.cloudinary.com/ducv9j3hj/image/upload/v1770914582/unnamed_d76jew.png"
+          src="https://res.cloudinary.com/ducv9j3hj/image/upload/v1779726464/d365businesscentral_256x256_ftvkfy.png"
           alt="Microsoft Dynamics 365 Business Central"
           fetchPriority="high"
           className="h-16 w-auto object-contain"
