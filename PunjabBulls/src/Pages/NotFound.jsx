@@ -42,7 +42,7 @@ export default function NotFound() {
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Link
-                  to="/"
+                  to="/home"
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-primary/90"
                 >
                   <Home className="h-4 w-4" />
