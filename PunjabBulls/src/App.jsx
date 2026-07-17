@@ -12,6 +12,7 @@ import EditBlog from "./Pages/Admin/EditBlog";
 import ImageAuditLogs from "./Pages/Admin/ImageAuditLogs";
 
 import Home from "./Pages/Home";
+import Landing from "./Pages/Landing";
 import Industries from "./Pages/Industries";
 import Privacy from "./Pages/Privacy";
 import Products from "./Pages/Products";
@@ -68,6 +69,7 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route element={<Layout />}>
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route
@@ -119,7 +121,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/products" element={<Products />} />
