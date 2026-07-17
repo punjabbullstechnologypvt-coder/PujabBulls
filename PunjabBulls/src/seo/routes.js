@@ -3,9 +3,9 @@ import { generatedRouteMeta } from "./generatedPages.js";
 const baseRouteMeta = {
   "/": {
     title:
-      "PunjabBulls Technology Pvt. Ltd. | ERP & Digital Transformation Company in India",
+      "PunjabBulls Technology Pvt. Ltd. | Modern ERP for India's Growing Industries",
     description:
-      "PunjabBulls helps Indian businesses modernize operations with Microsoft Dynamics 365 Business Central, ERP implementation, CRM strategy, cloud migration, and consulting services.",
+      "PunjabBulls Technology delivers Microsoft Dynamics 365 Business Central and industry-tailored ERP for Rice mills, Furniture, Nursery, FMCG, Export and Distribution businesses across India.",
     keywords: [
       "ERP company India",
       "digital transformation company India",
@@ -18,6 +18,24 @@ const baseRouteMeta = {
     sitemap: true,
     changefreq: "daily",
     priority: "1.0",
+  },
+  "/home": {
+    title:
+      "PunjabBulls Technology Pvt. Ltd. | ERP & Digital Transformation Company in India",
+    description:
+      "PunjabBulls helps Indian businesses modernize operations with Microsoft Dynamics 365 Business Central, ERP implementation, CRM strategy, cloud migration, and consulting services.",
+    keywords: [
+      "ERP company India",
+      "digital transformation company India",
+      "Microsoft Dynamics 365 Business Central partner India",
+      "ERP implementation services",
+      "business automation consulting",
+    ],
+    canonical: "/home",
+    prerender: true,
+    sitemap: true,
+    changefreq: "daily",
+    priority: "0.9",
   },
   "/about": {
     title: "About PunjabBulls | ERP, CRM & Digital Transformation Experts",
