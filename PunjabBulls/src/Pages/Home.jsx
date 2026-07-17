@@ -8,7 +8,7 @@ import { staticRouteMeta } from "../seo/routes";
 import { SITE_URL } from "../seo/site";
 
 const Home = () => {
-  const meta = staticRouteMeta["/"];
+  const meta = staticRouteMeta["/home"];
 
   return (
     <>
