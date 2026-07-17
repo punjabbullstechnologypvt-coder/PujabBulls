@@ -12,6 +12,7 @@ import morgan from 'morgan'
 import rateLimit from "express-rate-limit";
 import { randomUUID } from "node:crypto";
 import auditRoutes from "./routes/auditRoutes.js";
+import leadRoutes from "./routes/leadRoutes.js";
 import { writeAuditLog } from "./utils/auditLogger.js";
 
 
@@ -128,6 +129,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/audit", auditRoutes);
+app.use("/api/leads", leadRoutes);
 
 app.use(async (err, req, res, next) => {
   console.error(err);
