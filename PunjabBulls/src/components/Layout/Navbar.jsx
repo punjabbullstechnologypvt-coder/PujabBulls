@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { moreMenuSeoPages } from "../../seo/generatedPages";
 
 const navItems = [
-  ["Home", "/"],
+  ["Home", "/home"],
   ["Industries", "/industries"],
   ["Products", "/products"],
   ["About", "/about"],
@@ -79,14 +79,14 @@ export default function Navbar() {
     setIsAdmin(false);
     setAdminMenu(false);
     setOpen(false);
-    navigate("/");
+    navigate("/home");
   };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#e9f1eb] bg-[#f9fbf9]/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
         <Link
-          to="/"
+          to="/home"
           className="flex items-center gap-4 text-[#101912]"
           onClick={() => setOpen(false)}
         >
