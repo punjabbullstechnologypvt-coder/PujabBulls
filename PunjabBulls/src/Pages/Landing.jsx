@@ -170,12 +170,12 @@ export default function Landing() {
     return () => clearTimeout(timer);
   }, [toast]);
 
-  useEffect(() = {
-    const el = document.getElementById("contact");
-    if (el) {
-      el.scrollIntroView({behavior: "smooth", block: "start" });
-    }
-  }, []);
+  useEffect(() => {
+  const el = document.getElementById("contact");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}, []);
 
   const updateField = (field) => (e) =>
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
