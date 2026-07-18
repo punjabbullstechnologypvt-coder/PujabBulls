@@ -27,7 +27,7 @@ export default function SplashScreen({ onFinish }) {
       <div className="splash-content">
         <div className="logo-container">
           <img 
-            src = "/images/pb-logo.png"
+            src="/images/pb-logo.png" 
             alt="PunjabBulls" 
             className="splash-logo"
           />
