@@ -29,8 +29,7 @@ import SEO from "../components/SEO";
 import { staticRouteMeta } from "../seo/routes";
 import { SITE_URL } from "../seo/site";
 
-const PB_LOGO =
-  "https://res.cloudinary.com/ducv9j3hj/image/upload/v1770456470/logo_ry6usn.png";
+const PB_LOGO = "/images/pb-logo.png";
 const BC_LOGO = "/images/business-central-logo-new.png";
 const DYNAMICS_DASHBOARD = "/images/Dashboard.png";
 const MS_PARTNER_LOGO = "/images/microsoft-dynamics-365.png";
@@ -171,6 +170,13 @@ export default function Landing() {
     return () => clearTimeout(timer);
   }, [toast]);
 
+  useEffect(() = {
+    const el = document.getElementById("contact");
+    if (el) {
+      el.scrollIntroView({behavior: "smooth", block: "start" });
+    }
+  }, []);
+
   const updateField = (field) => (e) =>
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
@@ -275,7 +281,7 @@ export default function Landing() {
       <header className="sticky top-0 z-40 bg-[#fcfbf8]/90 backdrop-blur border-b border-[#0f5132]/10">
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={PB_LOGO} alt="PunjabBulls Technology" className="h-10 w-auto" />
+            <img src={PB_LOGO} alt="PunjabBulls Technology" className="h-16 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
             <a href="#about" className="hover:text-[#0f5132]">About</a>
@@ -716,7 +722,7 @@ export default function Landing() {
       <footer className="bg-[#0a3d24] text-white text-sm">
         <div className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-3 gap-10">
           <div>
-            <img src={PB_LOGO} alt="PunjabBulls" className="h-12 w-auto bg-white rounded-lg p-2" />
+            <img src={PB_LOGO} alt="PunjabBulls" className="h-20 w-auto bg-white rounded-lg p-2" />
             <p className="mt-5 text-white/70 leading-relaxed">
               PunjabBulls Technology Pvt. Ltd. — Microsoft Dynamics 365 & industry ERP
               solutions across India.
