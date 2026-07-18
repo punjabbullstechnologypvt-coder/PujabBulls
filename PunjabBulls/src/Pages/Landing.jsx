@@ -32,7 +32,7 @@ import { SITE_URL } from "../seo/site";
 const PB_LOGO = "/images/pb-logo.png";
 const BC_LOGO = "/images/business-central-logo-newUpdated.png";
 const DYNAMICS_DASHBOARD = "/images/DashboardUpdated.png";
-const MS_PARTNER_LOGO = "/images/microsoft-dynamics-365Updated.png";
+const MS_PARTNER_LOGO = "/images/microsoft-dynamics-365Updated2.png";
 
 const industries = [
   {
@@ -299,7 +299,7 @@ export default function Landing() {
         <div className="mx-auto max-w-7xl px-6 py-20 md:py-24 grid md:grid-cols-2 gap-12">
           <div>
             <div className="mb-6 inline-flex items-center gap-4">
-              <img src={MS_PARTNER_LOGO} alt="Microsoft Solutions Partner" className="h-20 w-auto rounded-lg bg-white/10 p-2" />
+              <img src={MS_PARTNER_LOGO} alt="Microsoft Solutions Partner" className="h-25 w-auto rounded-lg bg-white/10 p-2" />
               <span className="text-white font-semibold text-base">Certified Microsoft Partner</span>
             </div>
             <div className="text-white/60 text-sm font-semibold tracking-widest">GET IN TOUCH</div>
