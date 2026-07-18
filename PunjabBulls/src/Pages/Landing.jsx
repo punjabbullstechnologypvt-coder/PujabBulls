@@ -299,7 +299,7 @@ export default function Landing() {
         <div className="mx-auto max-w-7xl px-6 py-20 md:py-24 grid md:grid-cols-2 gap-12">
           <div>
             <div className="mb-6 inline-flex items-center gap-4">
-              <img src={MS_PARTNER_LOGO} alt="Microsoft Solutions Partner" className="h-25 w-auto rounded-lg bg-white/10 p-2" />
+              <img src={MS_PARTNER_LOGO} alt="Microsoft Solutions Partner" className="h-30 w-auto rounded-lg bg-white/10 p-2" />
               <span className="text-white font-semibold text-base">Certified Microsoft Partner</span>
             </div>
             <div className="text-white/60 text-sm font-semibold tracking-widest">GET IN TOUCH</div>
@@ -437,7 +437,7 @@ export default function Landing() {
             <img
               src={BC_LOGO}
               alt="Microsoft Dynamics 365 Business Central"
-              className="h-16 md:h-20 w-auto mb-6 object-contain drop-shadow-lg"
+              className="h-30 md:h-20 w-auto mb-6 object-contain drop-shadow-lg"
             />
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 text-xs tracking-widest uppercase">
               Microsoft Dynamics 365 Partner
@@ -481,7 +481,7 @@ export default function Landing() {
           <div className="relative">
             <div className="absolute -inset-6 bg-white/5 rounded-3xl blur-2xl" />
             <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
-              <img src={BC_LOGO} alt="Microsoft Dynamics 365 Business Central" className="h-20 md:h-24 w-auto mx-auto object-contain" />
+              <img src={BC_LOGO} alt="Microsoft Dynamics 365 Business Central" className="h-30 md:h-25 w-auto mx-auto object-contain" />
               <div className="mt-6 text-center">
                 <h3 className="text-xl font-serif text-[#0f2418]">Authorised Dynamics 365 Partner</h3>
                 <p className="mt-2 text-sm text-[#0f2418]/70">
@@ -614,7 +614,7 @@ export default function Landing() {
         <div className="mx-auto max-w-7xl px-6 py-24 grid md:grid-cols-3 gap-12">
           <div className="md:col-span-1">
             <div className="mb-6">
-              <img src={BC_LOGO} alt="Microsoft Dynamics 365 Business Central" className="h-20 md:h-24 w-auto object-contain" />
+              <img src={BC_LOGO} alt="Microsoft Dynamics 365 Business Central" className="h-30 md:h-30 w-auto object-contain" />
             </div>
             <div className="text-white/60 text-sm font-semibold tracking-widest">WHY PUNJABBULLS</div>
             <h2 className="mt-3 text-4xl md:text-5xl font-serif leading-tight">
