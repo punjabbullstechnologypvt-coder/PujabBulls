@@ -170,13 +170,6 @@ export default function Landing() {
     return () => clearTimeout(timer);
   }, [toast]);
 
-  useEffect(() => {
-  const el = document.getElementById("contact");
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-}, []);
-
   const updateField = (field) => (e) =>
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
@@ -301,6 +294,139 @@ export default function Landing() {
           </Link>
         </div>
       </header>
+
+      <section id="contact" className="bg-[#0f5132] text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-24 grid md:grid-cols-2 gap-12">
+          <div>
+            <div className="mb-6 inline-flex items-center gap-4">
+              <img src={MS_PARTNER_LOGO} alt="Microsoft Solutions Partner" className="h-16 w-auto rounded-lg bg-white/10 p-2" />
+              <span className="text-white font-semibold text-base">Certified Microsoft Partner</span>
+            </div>
+            <div className="text-white/60 text-sm font-semibold tracking-widest">GET IN TOUCH</div>
+            <h2 className="mt-3 text-4xl md:text-5xl font-serif">
+              Ready to modernise your business?
+            </h2>
+            <p className="mt-4 text-white/70 max-w-md">
+              Talk to our Dynamics 365 specialists about your implementation, migration or
+              training needs. We respond within one business day.
+            </p>
+            <div className="mt-10 space-y-6">
+              <div className="flex gap-4 items-start">
+                <Phone className="h-5 w-5 mt-1 text-white/70" />
+                <div className="flex-1">
+                  <div className="text-xs uppercase tracking-widest text-white/60">Phone</div>
+                  <div className="font-semibold">+91 9711270115</div>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <Mail className="h-5 w-5 mt-1 text-white/70" />
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-white/60">Email</div>
+                  <div className="font-semibold">info@punjabbulls.com</div>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <MapPin className="h-5 w-5 mt-1 text-white/70" />
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-white/60">Head Office</div>
+                  <div className="font-semibold">PunjabBulls Technology Pvt. Ltd.</div>
+                  <div className="text-white/80 text-sm mt-1">
+                    FE-30, Lower Ground Floor, Shivaji Enclave,
+                    <br />
+                    New Delhi – 110027, India
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 text-center">
+              {[
+                ["200+", "Implementations"],
+                ["100%", "GST Compliant"],
+                ["24×7", "Support"],
+              ].map(([n, l]) => (
+                <div key={l}>
+                  <div className="text-2xl md:text-3xl font-serif">{n}</div>
+                  <div className="text-[10px] md:text-xs uppercase tracking-widest text-white/60 mt-1">{l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <form
+            className="bg-white text-[#0f2418] rounded-3xl p-8 shadow-2xl space-y-4"
+            onSubmit={handleSubmit}
+          >
+            <h3 className="text-2xl font-serif">Request a Free Demo</h3>
+            <p className="text-sm text-[#0f2418]/60">Our team will contact you within 24 hours.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input
+                required
+                placeholder="Full name"
+                value={form.name}
+                onChange={updateField("name")}
+                className="rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
+              />
+              <input
+                required
+                type="email"
+                placeholder="Email address"
+                value={form.email}
+                onChange={updateField("email")}
+                className="rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
+              />
+              <input
+                placeholder="Business name"
+                value={form.businessName}
+                onChange={updateField("businessName")}
+                className="rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
+              />
+              <input
+                required
+                placeholder="Phone number"
+                value={form.phone}
+                onChange={updateField("phone")}
+                className="rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
+              />
+            </div>
+            <select
+              value={form.industry}
+              onChange={updateField("industry")}
+              className="w-full rounded-lg border border-[#0f5132]/20 px-4 py-3 bg-white"
+            >
+              <option value="">Select your industry</option>
+              {industries.map((i) => (
+                <option key={i.name} value={i.name}>{i.name}</option>
+              ))}
+              <option value="Others">Others</option>
+            </select>
+            {form.industry === "Others" && (
+              <input
+                required
+                maxLength={200}
+                placeholder="Please describe your business"
+                value={form.industryOther}
+                onChange={updateField("industryOther")}
+                className="w-full rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
+              />
+            )}
+            <textarea
+              rows={3}
+              placeholder="Tell us about your requirement"
+              value={form.message}
+              onChange={updateField("message")}
+              className="w-full rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
+            />
+            <button
+              type="submit"
+              disabled={submitting}
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0f5132] text-white px-6 py-3 font-semibold hover:bg-[#0d4429] disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {submitting ? "Sending..." : "Request Callback"}
+              {!submitting && <ArrowRight className="h-4 w-4" />}
+            </button>
+          </form>
+        </div>
+      </section>
 
       {/* Hero */}
       <section id="top" className="relative overflow-hidden">
@@ -585,138 +711,6 @@ export default function Landing() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="bg-[#0f5132] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:py-24 grid md:grid-cols-2 gap-12">
-          <div>
-            <div className="mb-6 inline-flex items-center gap-4">
-              <img src={MS_PARTNER_LOGO} alt="Microsoft Solutions Partner" className="h-16 w-auto rounded-lg bg-white/10 p-2" />
-              <span className="text-white font-semibold text-base">Certified Microsoft Partner</span>
-            </div>
-            <div className="text-white/60 text-sm font-semibold tracking-widest">GET IN TOUCH</div>
-            <h2 className="mt-3 text-4xl md:text-5xl font-serif">
-              Ready to modernise your business?
-            </h2>
-            <p className="mt-4 text-white/70 max-w-md">
-              Talk to our Dynamics 365 specialists about your implementation, migration or
-              training needs. We respond within one business day.
-            </p>
-            <div className="mt-10 space-y-6">
-              <div className="flex gap-4 items-start">
-                <Phone className="h-5 w-5 mt-1 text-white/70" />
-                <div className="flex-1">
-                  <div className="text-xs uppercase tracking-widest text-white/60">Phone</div>
-                  <div className="font-semibold">+91 9711270115</div>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <Mail className="h-5 w-5 mt-1 text-white/70" />
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-white/60">Email</div>
-                  <div className="font-semibold">info@punjabbulls.com</div>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <MapPin className="h-5 w-5 mt-1 text-white/70" />
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-white/60">Head Office</div>
-                  <div className="font-semibold">PunjabBulls Technology Pvt. Ltd.</div>
-                  <div className="text-white/80 text-sm mt-1">
-                    FE-30, Lower Ground Floor, Shivaji Enclave,
-                    <br />
-                    New Delhi – 110027, India
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 text-center">
-              {[
-                ["200+", "Implementations"],
-                ["100%", "GST Compliant"],
-                ["24×7", "Support"],
-              ].map(([n, l]) => (
-                <div key={l}>
-                  <div className="text-2xl md:text-3xl font-serif">{n}</div>
-                  <div className="text-[10px] md:text-xs uppercase tracking-widest text-white/60 mt-1">{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <form
-            className="bg-white text-[#0f2418] rounded-3xl p-8 shadow-2xl space-y-4"
-            onSubmit={handleSubmit}
-          >
-            <h3 className="text-2xl font-serif">Request a Free Demo</h3>
-            <p className="text-sm text-[#0f2418]/60">Our team will contact you within 24 hours.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                required
-                placeholder="Full name"
-                value={form.name}
-                onChange={updateField("name")}
-                className="rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
-              />
-              <input
-                required
-                type="email"
-                placeholder="Email address"
-                value={form.email}
-                onChange={updateField("email")}
-                className="rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
-              />
-              <input
-                placeholder="Business name"
-                value={form.businessName}
-                onChange={updateField("businessName")}
-                className="rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
-              />
-              <input
-                required
-                placeholder="Phone number"
-                value={form.phone}
-                onChange={updateField("phone")}
-                className="rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
-              />
-            </div>
-            <select
-              value={form.industry}
-              onChange={updateField("industry")}
-              className="w-full rounded-lg border border-[#0f5132]/20 px-4 py-3 bg-white"
-            >
-              <option value="">Select your industry</option>
-              {industries.map((i) => (
-                <option key={i.name} value={i.name}>{i.name}</option>
-              ))}
-              <option value="Others">Others</option>
-            </select>
-            {form.industry === "Others" && (
-              <input
-                required
-                maxLength={200}
-                placeholder="Please describe your business"
-                value={form.industryOther}
-                onChange={updateField("industryOther")}
-                className="w-full rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
-              />
-            )}
-            <textarea
-              rows={3}
-              placeholder="Tell us about your requirement"
-              value={form.message}
-              onChange={updateField("message")}
-              className="w-full rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
-            />
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0f5132] text-white px-6 py-3 font-semibold hover:bg-[#0d4429] disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {submitting ? "Sending..." : "Request Callback"}
-              {!submitting && <ArrowRight className="h-4 w-4" />}
-            </button>
-          </form>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-[#0a3d24] text-white text-sm">
