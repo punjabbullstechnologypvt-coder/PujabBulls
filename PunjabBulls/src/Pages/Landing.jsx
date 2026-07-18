@@ -30,7 +30,7 @@ import { staticRouteMeta } from "../seo/routes";
 import { SITE_URL } from "../seo/site";
 
 const PB_LOGO = "/images/pb-logo.png";
-const BC_LOGO = "/images/business-central-logo-newUpdated.png";
+const BC_LOGO = "/images/business-central-logoUpdated.png";
 const DYNAMICS_DASHBOARD = "/images/DashboardUpdated.png";
 const MS_PARTNER_LOGO = "/images/microsoft-dynamics-365Updated2.png";
 
