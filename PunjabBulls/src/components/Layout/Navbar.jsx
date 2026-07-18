@@ -91,9 +91,9 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
         >
           <img
-            src="https://res.cloudinary.com/ducv9j3hj/image/upload/v1770456470/logo_ry6usn.png"
+            src="/images/pb-logo.png"
             alt="PunjabBulls Logo"
-            className="h-10 w-auto"
+            className="h-16 w-auto"
           />
         </Link>
 
