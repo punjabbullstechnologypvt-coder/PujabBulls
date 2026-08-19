@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { GoogleReCaptchaCheckbox } from "@google-recaptcha/react";
 import SEO from "../components/SEO";
 import { staticRouteMeta } from "../seo/routes";
 /* =======================
@@ -51,6 +52,21 @@ export default function ContactUs() {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null);
 
+  // reCAPTCHA state — token from Google's checkbox, plus a "key" we bump to
+  // force-remount the widget (its tokens are single-use, so we reset after
+  // every submit attempt regardless of outcome).
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const [recaptchaKey, setRecaptchaKey] = useState(0);
+
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaToken(typeof value === "string" ? value : null);
+  };
+
+  const resetRecaptcha = () => {
+    setRecaptchaToken(null);
+    setRecaptchaKey((k) => k + 1);
+  };
+
   /* =======================
      TOAST AUTO DISMISS
   ======================= */
@@ -81,6 +97,7 @@ export default function ContactUs() {
           phone: form.phone,
           email: form.email,
           message: form.message,
+          recaptchaToken,
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -97,6 +114,8 @@ export default function ContactUs() {
       });
     } finally {
       setLoading(false);
+      // v2 tokens are single-use — reset so the user can submit again
+      resetRecaptcha();
     }
   };
 
@@ -225,9 +244,16 @@ export default function ContactUs() {
                 className="w-full border border-gray-200 px-4 py-3 rounded-(--radius) focus:outline-none focus:border-primary"
               />
 
+              <div className="flex justify-center">
+                <GoogleReCaptchaCheckbox
+                  key={recaptchaKey}
+                  onChange={handleRecaptchaChange}
+                />
+              </div>
+
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !recaptchaToken}
                 className="w-full rounded-full bg-primary text-white py-3 disabled:opacity-50"
               >
                 {loading ? "Sending..." : "Send message"}
