@@ -14,6 +14,7 @@ import { randomUUID } from "node:crypto";
 import auditRoutes from "./routes/auditRoutes.js";
 import leadRoutes from "./routes/leadRoutes.js";
 import { writeAuditLog } from "./utils/auditLogger.js";
+import { verifyRecaptcha } from "./middleware/recaptchaMiddleware.js";
 
 
 dotenv.config();
@@ -59,7 +60,7 @@ app.get("/", (req, res) => {
   return res.status(200).json({ success: true });
 });
 
-app.post("/api/contact", async (req, res) => {
+app.post("/api/contact", verifyRecaptcha, async (req, res) => {
   try {
     const name = req.body.name?.trim();
     const email = req.body.email?.trim();
