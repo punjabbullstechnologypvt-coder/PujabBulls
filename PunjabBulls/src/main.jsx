@@ -1,8 +1,11 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { GoogleReCaptchaProvider } from "@google-recaptcha/react";
 import App from "./App";
 import "./index.css";
+
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const container = document.getElementById("root");
 const isPrerenderedShell = Boolean(
@@ -11,7 +14,9 @@ const isPrerenderedShell = Boolean(
 const app = (
   <HelmetProvider>
     <BrowserRouter>
-      <App />
+      <GoogleReCaptchaProvider type="v2-checkbox" siteKey={RECAPTCHA_SITE_KEY}>
+        <App />
+      </GoogleReCaptchaProvider>
     </BrowserRouter>
   </HelmetProvider>
 );
