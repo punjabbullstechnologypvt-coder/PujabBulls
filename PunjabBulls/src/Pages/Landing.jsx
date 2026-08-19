@@ -25,6 +25,7 @@ import {
   TrendingUp,
   Quote,
 } from "lucide-react";
+import { GoogleReCaptchaCheckbox } from "@google-recaptcha/react";
 import SEO from "../components/SEO";
 import { staticRouteMeta } from "../seo/routes";
 import { SITE_URL } from "../seo/site";
@@ -32,7 +33,7 @@ import { SITE_URL } from "../seo/site";
 const PB_LOGO = "/images/pb-logo.png";
 const BC_LOGO = "/images/business-central-logoUpdated.png";
 const DYNAMICS_DASHBOARD = "/images/DashboardUpdated.png";
-const MS_PARTNER_LOGO = "/images/microsoft-dynamics-365Updated2.png";
+const MS_PARTNER_LOGO = "/images/microsoft-dynamics-365Updated.png";
 
 const industries = [
   {
@@ -164,6 +165,22 @@ export default function Landing() {
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState(null);
 
+  // reCAPTCHA state — token from Google's checkbox, plus a "key" we bump to
+  // force-remount the widget (its tokens are single-use, so we reset after
+  // every submit attempt regardless of outcome).
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const [recaptchaKey, setRecaptchaKey] = useState(0);
+
+  const handleRecaptchaChange = (value) => {
+    // Library passes string (token), false (expired), or Error
+    setRecaptchaToken(typeof value === "string" ? value : null);
+  };
+
+  const resetRecaptcha = () => {
+    setRecaptchaToken(null);
+    setRecaptchaKey((k) => k + 1);
+  };
+
   useEffect(() => {
     if (!toast) return;
     const timer = setTimeout(() => setToast(null), 5000);
@@ -188,6 +205,7 @@ export default function Landing() {
           industry: form.industry === "Others" ? form.industryOther : form.industry,
           message: form.message,
           source: "landing-page",
+          recaptchaToken,
         },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -215,6 +233,8 @@ export default function Landing() {
       });
     } finally {
       setSubmitting(false);
+      // v2 tokens are single-use — reset so the user can submit again
+      resetRecaptcha();
     }
   };
 
@@ -416,9 +436,15 @@ export default function Landing() {
               onChange={updateField("message")}
               className="w-full rounded-lg border border-[#0f5132]/20 px-4 py-3 focus:outline-none focus:border-[#0f5132]"
             />
+            <div className="flex justify-center">
+              <GoogleReCaptchaCheckbox
+                key={recaptchaKey}
+                onChange={handleRecaptchaChange}
+              />
+            </div>
             <button
               type="submit"
-              disabled={submitting}
+              disabled={submitting || !recaptchaToken}
               className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0f5132] text-white px-6 py-3 font-semibold hover:bg-[#0d4429] disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {submitting ? "Sending..." : "Request Callback"}
@@ -437,7 +463,7 @@ export default function Landing() {
             <img
               src={BC_LOGO}
               alt="Microsoft Dynamics 365 Business Central"
-              className="h-30 md:h-20 w-auto mb-6 object-contain drop-shadow-lg"
+              className="h-30 md:h-30 w-auto mb-6 object-contain drop-shadow-lg"
             />
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 text-xs tracking-widest uppercase">
               Microsoft Dynamics 365 Partner
